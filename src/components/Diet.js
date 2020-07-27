@@ -41,10 +41,12 @@ export default function Diet(){
                      <label htmlFor="vegan"> Vegan</label>
                      <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat"/>
                      <label htmlFor="vehicle3"> Pescetarians</label>
-                     </form>
-                     <div>
-                            <p>Click to see and example of a <a href="/example.html">search</a> result.</p>
-                     </div>
+                </form>
+                <div>
+                <form>
+                    <input type="submit" value="Submit"/>
+                </form>  
+                </div>    
         </div>
     </section>
     )
