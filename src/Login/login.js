@@ -140,21 +140,29 @@ export default class Login extends Component{
               >
                 Restaurant Login
               </button>
-              <button className="tabLinks" value="Register" onClick={this.openTab}>
+              <button 
+              className="tabLinks" 
+              value="Register" 
+              onClick={this.openTab}>
                 Restaurant Register
               </button>
             </div>
-            <div id="Login" className="tabContent">
+            <div id="Login" 
+            className="tabContent">
               <h3>Restaurant Login</h3>
-              <form className="login-form" onSubmit={this.handleSubmit}>
+              <form 
+              className="login-form" 
+              onSubmit={this.handleSubmit}>
                 <div role="alert">{error && <p className="error">{error}</p>}</div>
-                <div className="user_name">
-                  <label htmlFor="login-form-user_name">Username:</label>
+                <div 
+                className="user_name">
+                  <label htmlFor="login-form-username">Username:</label>
                   <input
                     type="text"
-                    name="user_name"
-                    id="login-form-user_name"
+                    name="username"
+                    id="login-form-username"
                     required
+                    value="Username"
                   ></input>
                 </div>
                 <div className="password">
@@ -163,6 +171,7 @@ export default class Login extends Component{
                     type="password"
                     name="password"
                     id="login-form-password"
+                    value="********"
                     required
                   ></input>
                 </div>
@@ -170,21 +179,26 @@ export default class Login extends Component{
               </form>
             </div>
     
-            <div id="Register" className="tabContent">
+            <div id="Register" 
+            className="tabContent">
               <h3>Restaurant Register</h3>
-              <form className="register-form" onSubmit={this.handleRegisterSubmit}>
+              <form 
+              className="register-form" 
+              onSubmit={this.handleRegisterSubmit}>
                 <div role="alert">
                   {error && <p className="error">{error}</p>}
                   {registered && (
                     <p className="registered-alert">Restaurant account created!</p>
                   )}
                 </div>
-                <div className="username">
+                <div 
+                className="username">
                   <label htmlFor="register-form-username">Username:</label>
                   <input
                     type="text"
                     name="username"
                     id="register-form-username"
+                    value='Username'
                     required
                   ></input>
                 </div>
@@ -194,24 +208,27 @@ export default class Login extends Component{
                     type="password"
                     name="password"
                     id="register-form-password"
+                    value='******'
                     required
                   ></input>
                 </div>
                 <div className="restname">
-                  <label htmlFor="register-form-nickname">Restaurant Name:</label>
+                  <label htmlFor="register-form-restname">Restaurant Name:</label>
                   <input
                     type="text"
                     name="restname"
                     id="register-form-restname"
+                    value="Joe's Pizzeria"
                     required
                   ></input>
                 </div>
                 <div className="phone">
-                  <label htmlFor="register-form-nickname">Phone:</label>
+                  <label htmlFor="register-form-phone">Phone:</label>
                   <input
                     type="text"
                     name="phone"
                     id="register-form-phone"
+                    value='317-123-3456'
                     required
                   ></input>
                 </div>
