@@ -39,7 +39,7 @@ export default function Diet(){
                      <label htmlFor="vege"> Vegetarian</label>
                      <input type="checkbox" id="vegan" name="vegan" value="vegan"/>
                      <label htmlFor="vegan"> Vegan</label>
-                     <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat"/>
+                     <input type="checkbox" id="vehicle3" name="vehicle3" value="pesc"/>
                      <label htmlFor="vehicle3"> Pescetarians</label>
                 </form>
                 <div>
