@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import DishListContext from '../Context/DishListContext'
 import TokenService from '../Service/TokenService';
 import DishAPIService from '../Service/DishAPIService';
+import CheckboxContainer from '../Checkbox/CheckboxContainer';
 
 
 export default class AddDish extends Component{
@@ -49,7 +50,7 @@ export default class AddDish extends Component{
               <div className='dish-select-button-div'>
                 <label htmlFor='tag'>Tag: (up to 5) </label>
                 {/* TODO WILL NEED TO RESTRICT TO MAX 5 */}
-      
+                <CheckboxContainer />
                 <button type='submit'>
                   Save
                 </button>
