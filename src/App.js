@@ -6,9 +6,10 @@ import Copyright from './pages/Copyright';
 import NavBar from './components/NavBar';
 import Login from './Login/Login';
 import './App.css';
+import Register from './Resgister/Resgister';
 //import MainRouter from './router/MainRouter';
-import DemoCarousel from './Carousel/Carousel';
-import CheckboxContainer from './Checkbox/CheckboxContainer';
+// import DemoCarousel from './Carousel/Carousel';
+// import CheckboxContainer from './Checkbox/CheckboxContainer';
 
 function App(){
 
@@ -26,15 +27,15 @@ function App(){
                   <NavBar />
               </Route>
               <Route exact path='/rest-login' component={Login} />
-              <Route exact path='/rest-register' component={Login} />
+              <Route exact path='/rest-register' component={Register} />
             </Switch>
           </div>
      </nav>
      <main>
        <p>Top Three Dishes:</p>
-       <DemoCarousel />
+       {/* <DemoCarousel /> */}
      {/* <MainRouter /> */}
-      <CheckboxContainer />
+      {/* <CheckboxContainer /> */}
      </main>
         <footer>
           <FooterRouter />  

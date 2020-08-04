@@ -6,8 +6,8 @@ export default function Main(){
         <nav>
             <div>
                 <h2>Restaurant</h2>
-            <NavLink exact path='/rest-login'>Login</NavLink>   
-            <NavLink exact path='/rest-register'>Register</NavLink> 
+            <NavLink exact to='/rest-login'>Login</NavLink>   
+            <NavLink exact to='/rest-register'>Register</NavLink> 
             </div>
         </nav>
     )

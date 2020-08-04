@@ -3,11 +3,9 @@ import TokenService from '../Service/TokenService';
 
 export const LoginContext = React.createContext(
     {
-        restname: '',
         loggedIn: false,
         error: null,
-        registered: false,
-        handleLoginState: () => {},
+        handleRestLoginState: () => {},
     }
 );
 
@@ -21,8 +19,8 @@ export class LoginProvider extends Component{
         error: null,
     };
 
-    saveRestName = (restname) => {
-        this.setState({ restname });
+    saveRestName = (name) => {
+        this.setState({ name });
     };
 
     handleRestLoginState = (isLoggedIn) => {
@@ -39,7 +37,10 @@ export class LoginProvider extends Component{
 
     render() {
         const value = {
-            restname: this.state.restname,
+            name: this.state.restname,
+            password: this.state.password,
+            username: this.state.username,
+            phone: this.state.phone,
             loggedIn: this.state.loggedIn,
             registered: this.state.registered,
             error: this.state.error,
