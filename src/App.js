@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link, Switch, Route } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import FooterRouter from './router/FooterRouter';
 import Copyright from './pages/Copyright';
 import NavBar from './components/NavBar';
-import UserLogin from './components/UserLogin';
-import UserRegister from './components/UserRegister';
-import RestLogin from './components/RestLogin';
-import RestRegister from './components/RestRegister';
+import Login from './Login/Login';
 import './App.css';
-import MainRouter from './router/MainRouter';
+//import MainRouter from './router/MainRouter';
+import DemoCarousel from './Carousel/Carousel';
+import CheckboxContainer from './Checkbox/CheckboxContainer';
 
 function App(){
 
@@ -25,15 +25,16 @@ function App(){
               <Route exact path ='/'>
                   <NavBar />
               </Route>
-              <Route exact path='/user-login' component={UserLogin} />
-              <Route exact path='/user-register' component={UserRegister} />
-              <Route exact path='/rest-login' component={RestLogin} />
-              <Route exact path='/rest-register' component={RestRegister} />
+              <Route exact path='/rest-login' component={Login} />
+              <Route exact path='/rest-register' component={Login} />
             </Switch>
           </div>
      </nav>
      <main>
-     <MainRouter />
+       <p>Top Three Dishes:</p>
+       <DemoCarousel />
+     {/* <MainRouter /> */}
+      <CheckboxContainer />
      </main>
         <footer>
           <FooterRouter />  

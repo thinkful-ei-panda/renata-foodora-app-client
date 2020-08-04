@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import LoginContext from '../Context/LoginContext';
-import TokenService from './Service/TokenService';
-import AuthAPIService from './Service/AuthAPIService';
-import GridLoader from "react-spinners/GridLoader";
+import TokenService from '../Service/TokenService';
+import AuthAPIService from '../Service/AuthAPIService';
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 export default class Login extends Component{
 
@@ -120,7 +120,7 @@ export default class Login extends Component{
     componentDidMount(){
         document.getElementsByClassName('tabLinks')[0].click();
     }
-
+//TODO fields are read only
     render(){
         const { error, loading } = this.state;
         const { registered } = this.context;
@@ -128,7 +128,8 @@ export default class Login extends Component{
             <main className="landing-main">
             {loading && (
               <div className="loading-screen">
-                <GridLoader size={15} color={"#067368"} loading={loading} />
+                <ScaleLoader size={35} color={"#067368"} loading={loading} />
+                {/* TODO remember to change color  */}
               </div>
             )}
             <div className="tab">
