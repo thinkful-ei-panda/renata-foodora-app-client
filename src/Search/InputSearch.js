@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InpputSearch = props => {
+const InputSearch = props => {
     const { search, price, tag } = props.tags;
     return (
         <div id="chosen-tags">
@@ -56,15 +56,6 @@ const InpputSearch = props => {
             </div>
           ) : null}
           {/* ************** TAGS ************** */}
-          {tag.glfree ? (
-            <div
-              className="collection"
-              data-name="glfree"
-              onClick={event => props.allFilterClickListener(event, "tag")}
-            >
-              <h6 data-name="glfree">Gluten Free</h6>
-            </div>
-          ) : null}
         {tag.peanallergy ? (
             <div
               className="collection"
@@ -155,6 +146,15 @@ const InpputSearch = props => {
               <h6 data-name="lowsugar">Low Sugar</h6>
             </div>
           ) : null}
+        {tag.glfree ? (
+            <div
+              className="collection"
+              data-name="glfree"
+              onClick={event => props.allFilterClickListener(event, "tag")}
+            >
+              <h6 data-name="glfree">Gluten Free</h6>
+            </div>
+          ) : null}
         {tag.sugarfree ? (
             <div
               className="collection"
@@ -211,4 +211,6 @@ const InpputSearch = props => {
           ) : null}
         </div>
       );
-    }
+}
+
+export default InputSearch;
