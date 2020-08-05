@@ -51,7 +51,7 @@ export default class Nav extends Component{
             <div>Restaurant</div>
           </Link>
           <Link to={'/register'}>
-            {this.renderRestName}
+            {this.renderRestName()}
           </Link>
             {this.context.loggedIn 
             ? this.renderLogout() 

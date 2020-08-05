@@ -86,7 +86,6 @@ class Display extends Component{
     // Universal Filter
 
     allFilterClickListener = (event, filterProp) => {
-        console.log('FILTER CLICKED', event.target.name);
         const name = event.target.dataset.name;
         this.setState(prevState => ({
             passingTags: {

@@ -5,6 +5,7 @@ export const LoginContext = React.createContext(
     {
         loggedIn: false,
         error: null,
+        saveRestName: () => {},
         handleRestLoginState: () => {},
     }
 );
@@ -37,7 +38,7 @@ export class LoginProvider extends Component{
 
     render() {
         const value = {
-            name: this.state.restname,
+            name: this.state.name,
             password: this.state.password,
             username: this.state.username,
             phone: this.state.phone,

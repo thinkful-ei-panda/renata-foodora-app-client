@@ -4,7 +4,7 @@ import About from '../pages/About';
 import Contact from '../pages/Contact';
 import FAQ from '../pages/FAQ';
 import Landing from '../pages/Landing';
-import Footer from '../components/Footer';
+import Footer from '../Components/Footer';
 
 export default function FooterRouter(){
     return(
