@@ -48,10 +48,12 @@ export class LoginProvider extends Component{
             handleRestRegisteredState: this.handleRestRegisteredState,
             saveRestName: this.saveRestName,
         };
-        return(      
+        return( 
+            <div>     
         <LoginContext.Provider value={value}>
             {this.props.children}
           </LoginContext.Provider>
+          </div>
         );
     }
 

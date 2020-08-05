@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import TokenService from '../Service/TokenService';
 import LoginContext from '../Context/LoginContext';
 
-export default class Nav extends Component(){
+export default class Nav extends Component{
 
   static contextType = LoginContext;
 
@@ -35,14 +35,13 @@ export default class Nav extends Component(){
   renderRestName(){
     let name = 'My';
     if(this.context.restname){
-      name = `${this.context.restname}'s`;
+      name = `${this.context.name}'s`;
     }
     return <div className="name-rest">{`${name} Restaurant`}</div>;
   }
 
   render(){
     return(
-      <>
       <nav className='navbar'>
         <div className='header-box'>
           <Link to={'/'}>
@@ -51,7 +50,7 @@ export default class Nav extends Component(){
           <Link to={'/login'}>
             <div>Restaurant</div>
           </Link>
-          <Link to={'/dish'}>
+          <Link to={'/register'}>
             {this.renderRestName}
           </Link>
             {this.context.loggedIn 
@@ -59,7 +58,6 @@ export default class Nav extends Component(){
             : this.renderLogin()}
         </div>
       </nav>
-      </>
     );
   }
 }

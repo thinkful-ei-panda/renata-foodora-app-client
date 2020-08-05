@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import LoginContext from '../Context/LoginContext';
 import AuthAPIService from '../Service/AuthAPIService';
-import TokenService from '../Service/TokenService';
+//import TokenService from '../Service/TokenService';
 import ScaleLoader from "react-spinners/ScaleLoader";
 
 export default class Register extends Component{
@@ -27,7 +27,8 @@ export default class Register extends Component{
 
     handleRegSubmit = (event) => {
         event.preventDefault();
-        this.props.postRest(
+        //this.props.postRest(
+          AuthAPIService.postRest(
             {
                 username: this.state.username,
                 password: this.state.password,
@@ -37,45 +38,49 @@ export default class Register extends Component{
                 loading: true
             }
         );
-        this.setState(
-            {
-                username: '',
-                password: '',
-                name: '',
-                phone: ''
-            }
-        );
-        this.handleRestSubmitJWTAuth(event)
+        // this.setState(
+        //     {
+        //         username: '',
+        //         password: '',
+        //         name: '',
+        //         phone: ''
+        //     }
+        // );
+         //this.handleRestSubmitJWTAuth(event)
     };
     
-    handleRestSubmitJWAuth = (event) => {
-        event.preventDefault();
+    // handleRestSubmitJWAuth = (event) => {
+    //     event.preventDefault();
 
-        const { username, password } = event.target;
+    //     const { username, password, name, phone } = event.target;
 
-        AuthAPIService.postLogin(
-            {
-                username: username.value,
-                password: password.value,
-            }
-        )
-        .then((res) => {
-            username.value = '';
-            password.value = '';
-            TokenService.saveAuthToken(res.authToken);
-            TokenService.saveRestId(res.restaurant_id);
-            this.context.saveRestName(res.restname);
-            this.props.onRegistrationSuccess();
-            this.context.handleRestLoginState(true);
-            this.props.history.push('/login');
-        })
-        .catch((res) => {
-            this.setState({ 
-                error: res.error, 
-                loading: false
-            });
-        });
-    };
+    //     AuthAPIService.postRest(
+    //         {
+    //             username: this.state.username.value,
+    //             password: this.state.password.value,
+    //             name: this.state.name.value,
+    //             phone: this.state.phone.value
+    //         }
+    //     )
+    //     .then((res) => {
+    //         username.value = '';
+    //         password.value = '';
+    //         name.value = '';
+    //         phone.value = '';
+    //         TokenService.saveAuthToken(res.authToken);
+    //         TokenService.saveRestId(res.restaurant_id);
+    //         this.context.saveRestName(res.restname);
+    //         this.props.onRegistrationSuccess();
+    //         this.context.handleRestLoginState(true);
+    //         this.props.history.push('/login');
+    //     })
+    //     .catch((res) => {
+    //         this.setState({ 
+    //             error: res.error, 
+    //             loading: false
+    //         });
+    //     });
+    // };
 
     render(){
         const { error, loading } = this.state;

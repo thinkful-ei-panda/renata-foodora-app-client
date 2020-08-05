@@ -2,7 +2,7 @@ import config from '../config';
 
 const AuthAPIService = {
     postLogin(credentials){
-        return fetch(`${config.API_ENDPOINT}/auth/login`, {
+        return fetch(`${config.API_ENDPOINT}/login`, {
             method: 'POST',
             headers: {
                 'content-type':'application/json'
@@ -16,7 +16,8 @@ const AuthAPIService = {
     },
 
     postRest(rest){
-        return fetch(`${config.API_ENDPOINT}/restaurant`, {
+        // TODO MAKE TO SHOW ERROR MSGS ON SCREEN
+        return fetch(`${config.API_ENDPOINT}/register`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

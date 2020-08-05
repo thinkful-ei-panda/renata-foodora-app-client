@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import LoginContext from '../Context/LoginContext';
 import ScaleLoader from "react-spinners/ScaleLoader";
 import AuthAPIService from '../Service/AuthAPIService';
-import TokenService from '../Service/TokenService';
+//import TokenService from '../Service/TokenService';
 
 export default class Login extends Component{
 
@@ -25,8 +25,9 @@ export default class Login extends Component{
 
   handleRestSubmit = (event) => {
     event.preventDefault();
-    this.props.postLogin(
-      {
+    //this.props.postLogin(
+      AuthAPIService.postLogin(
+     {
         username: this.state.username,
         password: this.state.password,
         error: null,
@@ -39,37 +40,37 @@ export default class Login extends Component{
           password: ''
         }
       );
-      this.handleRestSubmitJWTAuth(event)
+      //this.handleRestSubmitJWTAuth(event)
   };
 
-      handleRestSubmitJWAuth = (event) => {
-        event.preventDefault();
+    //   handleRestSubmitJWAuth = (event) => {
+    //     event.preventDefault();
 
-        const { username, password } = event.target;
+    //     const { username, password } = event.target;
 
-        AuthAPIService.postLogin(
-            {
-                username: username.value,
-                password: password.value,
-            }
-        )
-        .then((res) => {
-            username.value = '';
-            password.value = '';
-            TokenService.saveAuthToken(res.authToken);
-            TokenService.saveRestId(res.restaurant_id);
-            this.context.saveRestName(res.restname);
-            this.props.onLoginSuccess();
-            this.context.handleRestLoginState(true);
-            this.props.history.push('/login');
-        })
-        .catch((res) => {
-            this.setState({ 
-                error: res.error, 
-                loading: false
-            });
-        });
-    };
+    //     AuthAPIService.postLogin(
+    //         {
+    //             username: username.value,
+    //             password: password.value,
+    //         }
+    //     )
+    //     .then((res) => {
+    //         username.value = '';
+    //         password.value = '';
+    //         TokenService.saveAuthToken(res.authToken);
+    //         TokenService.saveRestId(res.restaurant_id);
+    //         this.context.saveRestName(res.restname);
+    //         this.props.onLoginSuccess();
+    //         this.context.handleRestLoginState(true);
+    //         this.props.history.push('/login');
+    //     })
+    //     .catch((res) => {
+    //         this.setState({ 
+    //             error: res.error, 
+    //             loading: false
+    //         });
+    //     });
+    // };
 
   render(){
     const { error, loading } = this.state;
