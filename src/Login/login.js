@@ -43,36 +43,34 @@ export default class Login extends Component {
       this.context.saveRestName(data.name);
       this.props.onLoginSuccess();
       this.context.handleRestLoginState(true);
-      this.props.history.push('/');
+      this.props.history.push("/");
     });
   };
 
-    handleRestSubmitJWTAuth = (event) => {
-      event.preventDefault();
+  handleRestSubmitJWTAuth = (event) => {
+    event.preventDefault();
 
-      const { username, password } = event.target;
+    const { username, password } = event.target;
 
-      AuthAPIService.postLogin(
-          {
-              username: username.value,
-              password: password.value,
-          }
-      )
+    AuthAPIService.postLogin({
+      username: username.value,
+      password: password.value,
+    })
       .then((res) => {
-          username.value = '';
-          password.value = '';
-          TokenService.saveAuthToken(res.authToken);
-          TokenService.saveRestId(res.restaurant_id);
-          this.context.saveRestName(res.restname);
-          this.props.onLoginSuccess();
-          this.context.handleRestLoginState(true);
-          this.props.history.push('/login');
+        username.value = "";
+        password.value = "";
+        TokenService.saveAuthToken(res.authToken);
+        TokenService.saveRestId(res.restaurant_id);
+        this.context.saveRestName(res.restname);
+        this.props.onLoginSuccess();
+        this.context.handleRestLoginState(true);
+        this.props.history.push("/login");
       })
       .catch((res) => {
-          this.setState({
-              error: res.error,
-              loading: false
-          });
+        this.setState({
+          error: res.error,
+          loading: false,
+        });
       });
   };
 

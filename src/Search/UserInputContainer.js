@@ -1,12 +1,11 @@
-import React from 'react';
-import InputSearch from './InputSearch';
-import Search from './Search';
-import Filter from './Filter';
+import React from "react";
+import InputSearch from "./InputSearch";
+import Search from "./Search";
+import Filter from "./Filter";
 
-
-const UserInputContainer = props => {
-    return(
-        <div id="user-input">
+const UserInputContainer = (props) => {
+  return (
+    <div id="user-input">
       <div>
         <InputSearch
           tags={props.tags}
@@ -25,7 +24,7 @@ const UserInputContainer = props => {
       </div>
       <Filter allFilterClickListener={props.allFilterClickListener} />
     </div>
-    )
-}
+  );
+};
 
 export default UserInputContainer;

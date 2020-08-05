@@ -1,5 +1,5 @@
 import config from "../config";
-import jsonwebtoken from 'jsonwebtoken';
+import jsonwebtoken from "jsonwebtoken";
 
 const TokenService = {
   saveAuthToken(token) {
@@ -16,7 +16,7 @@ const TokenService = {
 
   getAuthData() {
     let token = this.getAuthToken();
-    let data = jsonwebtoken.decode(token, {complete: true});
+    let data = jsonwebtoken.decode(token, { complete: true });
     return data;
   },
 
