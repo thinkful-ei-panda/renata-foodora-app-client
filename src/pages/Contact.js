@@ -5,7 +5,7 @@ export default function Contact(){
         <div>
         <address>
             We are located at:
-            PO Box number, City, 
+            PO Box 234, Dallas, 
             USA
         </address>
         </div>
