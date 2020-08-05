@@ -1,16 +1,13 @@
 import React from 'react';
 import { Link, Switch, Route } from 'react-router-dom';
-//import { Link } from 'react-router-dom';
 import FooterRouter from './router/FooterRouter';
 import Copyright from './pages/Copyright';
 import Nav from './Nav/Nav';
 import Login from './Login/Login';
 import './App.css';
 import Register from './Register/Register';
-//import Display from './Search/Display';
 import MainRouter from './router/MainRouter';
-//import DemoCarousel from './Carousel/Carousel';
-// import CheckboxContainer from './Checkbox/CheckboxContainer';
+
 
 function App(){
 
