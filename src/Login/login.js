@@ -3,6 +3,7 @@ import LoginContext from "../Context/LoginContext";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import AuthAPIService from "../Service/AuthAPIService";
 import TokenService from "../Service/TokenService";
+import { Redirect } from "react-router-dom";
 
 export default class Login extends React.Component {
   state = {
@@ -40,14 +41,15 @@ export default class Login extends React.Component {
       });
       TokenService.saveAuthToken(data.authToken);
       TokenService.saveRestId(data.restaurant_id);
-      this.context.saveRestName(data.name);
-      this.context.loggedIn = true;
-      this.props.history.push("/");
+      this.props.loginAction(data.restaurant_id, data.name);
     });
   };
 
   render() {
     const { error, loading } = this.state;
+    if (this.props.currentUserId != null) {
+      return <Redirect to="/" />;
+    }
     return (
       <div>
         <div id="login" className="tabContent">
@@ -80,14 +82,14 @@ export default class Login extends React.Component {
               Login
             </button>
             {loading && (
-          <div className="loading-screen">
-            <ScaleLoader size={35} color={"#067368"} loading={loading} />
-            {/* TODO remember to change color  */}
-          </div>
-        )}
+              <div className="loading-screen">
+                <ScaleLoader size={35} color={"#067368"} loading={loading} />
+                {/* TODO remember to change color  */}
+              </div>
+            )}
           </form>
         </div>
       </div>
     );
-  };
+  }
 }
