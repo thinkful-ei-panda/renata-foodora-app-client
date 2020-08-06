@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import LoginContext from "../Context/LoginContext";
 import AuthAPIService from "../Service/AuthAPIService";
-//import TokenService from '../Service/TokenService';
+import TokenService from '../Service/TokenService';
 import ScaleLoader from "react-spinners/ScaleLoader";
 
 export default class Register extends Component {
@@ -10,13 +10,15 @@ export default class Register extends Component {
     password: "",
     name: "",
     phone: "",
+    error: null,
+    loading: false,
   };
 
   static defaultProps = {
     onRegistrationSuccess: () => {},
   };
 
-  static = LoginContext;
+  static contextType = LoginContext;
 
   handleRegChange = (event) =>
     this.setState({
@@ -25,70 +27,38 @@ export default class Register extends Component {
 
   handleRegSubmit = (event) => {
     event.preventDefault();
-    //this.props.postRest(
+
+    this.setState({
+      loading: true,
+    });
+
     AuthAPIService.postRest({
       username: this.state.username,
       password: this.state.password,
       name: this.state.name,
       phone: this.state.phone,
-      error: null,
-      loading: true,
-    });
-    // this.setState(
-    //     {
-    //         username: '',
-    //         password: '',
-    //         name: '',
-    //         phone: ''
-    //     }
-    // );
-    //this.handleRestSubmitJWTAuth(event)
+    }).then((data) => {
+      this.setState({
+        loading: false,
+        username: '',
+        password: '',
+        name: '',
+        phone: '',
+      });
+      TokenService.saveAuthToken(data.authToken);
+      TokenService.saveRestId(data.restaurant_id);
+      this.context.saveRestName(data.name);
+      this.props.onRegistrationSuccess();
+      this.context.handleRestLoginState(true);
+      this.props.history.push('/');
+    })
   };
-
-  // handleRestSubmitJWAuth = (event) => {
-  //     event.preventDefault();
-
-  //     const { username, password, name, phone } = event.target;
-
-  //     AuthAPIService.postRest(
-  //         {
-  //             username: this.state.username.value,
-  //             password: this.state.password.value,
-  //             name: this.state.name.value,
-  //             phone: this.state.phone.value
-  //         }
-  //     )
-  //     .then((res) => {
-  //         username.value = '';
-  //         password.value = '';
-  //         name.value = '';
-  //         phone.value = '';
-  //         TokenService.saveAuthToken(res.authToken);
-  //         TokenService.saveRestId(res.restaurant_id);
-  //         this.context.saveRestName(res.restname);
-  //         this.props.onRegistrationSuccess();
-  //         this.context.handleRestLoginState(true);
-  //         this.props.history.push('/login');
-  //     })
-  //     .catch((res) => {
-  //         this.setState({
-  //             error: res.error,
-  //             loading: false
-  //         });
-  //     });
-  // };
 
   render() {
     const { error, loading } = this.state;
     const { registered } = this.context;
     return (
       <div>
-        {loading && (
-          <div className="loading-screen">
-            <ScaleLoader size={35} color={"#067368"} loading={loading} />
-            {/* TODO remember to change color  */}
-          </div>
-        )}
         <div id="register" className="tabContent">
           <h3>Restaurant Register</h3>
           <form className="register-form" onSubmit={this.handleRegSubmit}>
@@ -145,6 +115,12 @@ export default class Register extends Component {
             <button type="submit" onSubmit={this.handleRegSubmit}>
               Register
             </button>
+            {loading && (
+          <div className="loading-screen">
+            <ScaleLoader size={35} color={"#067368"} loading={loading} />
+            {/* TODO remember to change color  */}
+          </div>
+        )}
           </form>
         </div>
       </div>

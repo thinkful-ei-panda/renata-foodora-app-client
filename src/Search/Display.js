@@ -1,11 +1,10 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import * as $ from "jquery";
 import UserInputContainer from "./UserInputContainer";
 
 class Display extends Component {
   state = {
     userInputContainerClicked: false,
-    searchTerm: "",
     passingTags: {
       search: {
         inputTerm: "",
@@ -37,7 +36,16 @@ class Display extends Component {
         pesc: false,
       },
     },
+    dishes:[]
   };
+
+  // componentDidMount(){
+  //   fetch('http://localhost:8000/dishSearchResults?restaurant_id=25')
+  //   .then(res => res.json())
+  //   .then(data => this.setState({
+  //     dishes: data
+  //   }))
+  // }
 
   clickListener = () => {
     $("#userInputQuery").slideToggle();
@@ -51,9 +59,6 @@ class Display extends Component {
     event.preventDefault();
     this.setState({
       ...this.state.passingTags,
-      search: {
-        inputTerm: this.state.searchTerm,
-      },
     });
   };
 
@@ -68,7 +73,7 @@ class Display extends Component {
 
   sortClickListener = (pick) => {
     this.setState(
-      (prevState) => ({
+      () => ({
         ...this.state.passingTags,
       }),
       () => this.sortTags(pick)
@@ -108,7 +113,6 @@ class Display extends Component {
 
   render() {
     return (
-      <Fragment>
         <div>
           <UserInputContainer
             tags={this.state.passingTags}
@@ -120,7 +124,6 @@ class Display extends Component {
             searchSubmitListener={this.searchSubmitListener}
           />
         </div>
-      </Fragment>
     );
   }
 }

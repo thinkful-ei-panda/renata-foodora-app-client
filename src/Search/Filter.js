@@ -4,7 +4,7 @@ const Filter = (props) => {
   return (
     <div id="filter">
       <div>
-        {/* ************** PRICE RANGE ************** */}
+        {/* PRICE RANGE */}
         <div id="filter-price">
           <label className="filter-price">Choose the price range:</label>
           <div id="price-filter-container">
@@ -45,7 +45,7 @@ const Filter = (props) => {
             </div>
           </div>
         </div>
-        {/* ************** TAGS ************** */}
+        {/*  TAGS  */}
         <div id="filter-tag">
           <label className="filter-title">
             Choose your diet or food restriction:

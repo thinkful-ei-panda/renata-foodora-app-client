@@ -12,13 +12,12 @@ export default function FAQ() {
         </p>
         <h2>How many tags can I use for the search?</h2>
         <p>
-          "You have the maximum of 5 tags to use to do your research for
-          dishes."
+          "You have the maximum of five tags for your dietary restrictions and two for price range, to use to do your research for dishes."
         </p>
         <h2>As a restaurant, how can I update a dish?</h2>
         <p>
-          "It is very simple! Log into you account. There, you will be able to
-          see the list of dished you have. Click on Update in front of the dish
+          "Log into you account. Then, you will be able to
+          see the list of dishes you have. Click on Update in front of the dish
           you want to update."
         </p>
         <h2>As a restaurant, is it possible to delete my account?</h2>

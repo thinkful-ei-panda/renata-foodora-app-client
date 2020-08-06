@@ -1,16 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import TokenService from "../Service/TokenService";
 import LoginContext from "../Context/LoginContext";
 
-export default class Nav extends Component {
+export default class Nav extends React.Component {
   static contextType = LoginContext;
 
   handleLogout = () => {
     TokenService.clearAuthToken();
     TokenService.clearRestId();
-    this.context.handleRestLoginState(false);
-    this.context.handleRestRegisteredState(false);
+    this.context.loggedIn = false;
+    this.context.registered = false;
   };
 
   renderLogin() {
@@ -23,32 +23,35 @@ export default class Nav extends Component {
 
   renderLogout() {
     return (
-      <Link onClick={this.handleLogout} to={"/login"}>
+      <Link onClick={this.handleLogout} to={"/"}>
         <div>Logout</div>
       </Link>
     );
   }
 
+  //TODO SHOW NAME WHEN LOGGED IN
   renderRestName() {
-    let name = "My";
-    if (this.context.restname) {
+    let name = "";
+    if (this.context.name) {
       name = `${this.context.name}'s`;
     }
-    return <div className="name-rest">{`${name} Restaurant`}</div>;
+    return <div className="name-rest">{`Welcome ${name} Restaurant`}</div>;
   }
 
   render() {
     return (
       <nav className="navbar">
         <div className="header-box">
-          <Link to={"/"}>
-            <h1>Foodora</h1>
-          </Link>
-          <Link to={"/login"}>
-            <div>Restaurant</div>
+          {/* <Link to={"/login"}>
+            <div>Restaurant Login</div>
+          </Link> */}
+          {this.context.loggedIn 
+          ? this.renderLogout() 
+          : this.renderLogin()}
+          <Link to={"/register"}>
+            <div>Restaurant Register</div>
           </Link>
           <Link to={"/register"}>{this.renderRestName()}</Link>
-          {this.context.loggedIn ? this.renderLogout() : this.renderLogin()}
         </div>
       </nav>
     );
