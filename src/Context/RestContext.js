@@ -25,8 +25,12 @@ export class RestContextProvider extends React.Component{
     }; 
 
     saveRestName = (name) => {
-      this.
-    }
+      this.setState({ name, });
+    };
+
+    handleRegisteredState = (isRegistered) => {
+      this.setState({ isRegistered, });
+    };
 
     setRestList = (restList) => {
         this.setState({ restList });
@@ -64,6 +68,8 @@ export class RestContextProvider extends React.Component{
           removeRest: this.removeRest,
           setLoadingTrue: this.setLoadingTrue,
           setLoadingFalse: this.setLoadingFalse,
+          saveRestName: this.saveRestName,
+          handleRegisteredState: this.handleRegisteredState,
       }
 
     return (

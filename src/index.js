@@ -4,13 +4,15 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { DishListProvider } from './Context/DishListContext';
-
+import { RestContextProvider } from './Context/RestContext';
 
 ReactDOM.render(
   <BrowserRouter>
-  <DishListProvider> 
-    <App />
-  </DishListProvider>
+    <RestContextProvider>
+      <DishListProvider> 
+        <App />
+      </DishListProvider>
+    </RestContextProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );

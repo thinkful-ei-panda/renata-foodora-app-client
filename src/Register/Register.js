@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import LoginContext from "../Context/LoginContext";
+import React from "react";
+import RestContext from '../Context/RestContext';
 import AuthAPIService from "../Service/AuthAPIService";
 import TokenService from '../Service/TokenService';
 import ScaleLoader from "react-spinners/ScaleLoader";
 
-export default class Register extends Component {
+export default class Register extends React.Component {
   state = {
     username: "",
     password: "",
@@ -18,7 +18,7 @@ export default class Register extends Component {
     onRegistrationSuccess: () => {},
   };
 
-  static contextType = LoginContext;
+  static contextType = RestContext;
 
   handleRegChange = (event) =>
     this.setState({
@@ -49,7 +49,7 @@ export default class Register extends Component {
       TokenService.saveRestId(data.restaurant_id);
       this.context.saveRestName(data.name);
       this.props.onRegistrationSuccess();
-      this.context.handleRestLoginState(true);
+      this.context.handleRegisteredState(true);
       this.props.history.push('/');
     })
   };
@@ -82,7 +82,7 @@ export default class Register extends Component {
             <div className="password">
               <label htmlFor="register-form-password">Password:</label>
               <input
-                type="text"
+                type="password"
                 name="password"
                 id="register-form-password"
                 value={this.state.password}
