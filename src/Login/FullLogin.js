@@ -3,7 +3,7 @@ import TokenService from "../Service/TokenService";
 import { Route, Switch, useHistory} from 'react-router-dom';
 import Register from '../Register/Register';
 import Nav from "../Nav/Nav";
-import Login from "../Login/Login";
+import Login from './Login';
 import LoginContext from '../Context/LoginContext';
 
 
