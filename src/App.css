@@ -1,5 +1,43 @@
 .App {
   text-align: center;
+  margin: 20px;
+  padding: 20px;
+  background-color: #222629;
+  color: #57ba98;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+}
+
+h1{
+  margin: 40px;
+  font-size: 35px;
+}
+
+h2{
+  font-size: 20px;
+  color: #57ba98;
+  font-style: italic;
+}
+
+nav{
+  margin: 40px;
+}
+
+.login{
+  color: white;
+}
+
+main{
+  margin: 40px;
+}
+
+.footer-router{ 
+  margin: 10px;
+  color: white;
+}
+
+.copyright{
+ font-size: 12px;
 }
 
 .App-logo {

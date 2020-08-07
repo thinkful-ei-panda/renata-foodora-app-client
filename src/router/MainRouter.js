@@ -7,8 +7,7 @@ export default function MainRouter() {
   return (
     <div>
       <Switch>
-      <Route exact path='/' component={AddDish}  />
-      {/* <Route exact path="/" component={} /> */}
+          <Route exact path='/' component={AddDish}  />
       </Switch>
     </div>
   );

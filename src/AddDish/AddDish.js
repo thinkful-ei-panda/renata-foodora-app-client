@@ -76,7 +76,9 @@ export default class AddDish extends Component {
           className="addDish-form"
           onSubmit={this.handleDishSubmit}
         >
-          
+          <div>
+            <h3>Search for your dish:</h3>  
+          </div>
           <div className="dish-name">
             <label htmlFor="dish-name">Dish Name:</label>
             <input

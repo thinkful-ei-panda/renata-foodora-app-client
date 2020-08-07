@@ -6,7 +6,7 @@ export default class Nav extends React.Component {
   static contextType = LoginContext;
 
   renderRestName(restName) {
-    return <div className="name-rest">{`Welcome ${restName} Restaurant`}</div>;
+    return <div className="login">{`Welcome ${restName} Restaurant`}</div>;
   }
 
   render() {
@@ -18,20 +18,20 @@ export default class Nav extends React.Component {
               if (loggedInRestaurantId == null) {
                 return (
                   <Link to={"/login"}>
-                    <div>Login</div>
+                    <div className="login">Login</div>
                   </Link>
                 );
               } else {
                 return (
                   <Link onClick={logout} to={"/"}>
-                    <div>Logout</div>
+                    <div className='login'>Logout</div>
                   </Link>
                 );
               }
             }}
           </LoginContext.Consumer>
           <Link to={"/register"}>
-            <div>Restaurant Register</div>
+            <div className="login">Restaurant Register</div>
           </Link>
           <LoginContext.Consumer>
             {({ loggedInRestaurantId, loggedInRestaurantName }) => {

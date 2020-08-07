@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 export default function Footer() {
   return (
     <footer>
-      <NavLink to="/about">About</NavLink>
-      <NavLink to="/contact">Contact</NavLink>
-      <NavLink to="/faq">FAQ</NavLink>
+      <NavLink className='footer-router' to="/about">About</NavLink>
+      <NavLink className='footer-router' to="/contact">Contact</NavLink>
+      <NavLink className='footer-router' to="/faq">FAQ</NavLink>
     </footer>
   );
 }
