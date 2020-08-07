@@ -41,6 +41,7 @@ export default class Login extends React.Component {
       });
       TokenService.saveAuthToken(data.authToken);
       TokenService.saveRestId(data.restaurant_id);
+      TokenService.saveRestName(data.name);
       this.props.loginAction(data.restaurant_id, data.name);
     });
   };
@@ -78,7 +79,10 @@ export default class Login extends React.Component {
                 required
               ></input>
             </div>
-            <button type="submit" onSubmit={this.handleRestSubmit}>
+            <button 
+            type="submit" 
+            onSubmit={this.handleRestSubmit}
+            >
               Login
             </button>
             {loading && (

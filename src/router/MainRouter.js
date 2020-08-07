@@ -1,12 +1,14 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Display from "../Search/Display";
+//import CheckboxContainer from '../Checkbox/CheckboxContainer';
+import AddDish from "../AddDish/AddDish";
 
 export default function MainRouter() {
   return (
     <div>
       <Switch>
-        <Route exact path="/" component={Display} />
+      <Route exact path='/' component={AddDish}  />
+      {/* <Route exact path="/" component={} /> */}
       </Switch>
     </div>
   );

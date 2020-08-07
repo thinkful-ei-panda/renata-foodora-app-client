@@ -7,7 +7,6 @@ export default function Footer() {
       <NavLink to="/about">About</NavLink>
       <NavLink to="/contact">Contact</NavLink>
       <NavLink to="/faq">FAQ</NavLink>
-      <NavLink to="/landing">Landing Page</NavLink>
     </footer>
   );
 }

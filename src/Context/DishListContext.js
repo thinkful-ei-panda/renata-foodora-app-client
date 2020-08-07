@@ -1,16 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
 
-const DishListContext = React.createContext({
+export const DishListContext = React.createContext({
   dishList: [],
   error: null,
   setError: () => {},
   clearError: () => {},
   setDishList: () => {},
+  setDishAddTrue: () => {},
+  setDishAddFalse: () => {},
+  removeElement: () => {},
+  remoteDishType: () => {},
+  setDishTypes: () => {},
+  removeDish: () => {},
 });
 
 export default DishListContext;
 
-export class DishListProvider extends Component {
+export class DishListProvider extends React.Component {
   state = {
     dishList: [],
     dishTypes: [],
@@ -62,7 +68,7 @@ export class DishListProvider extends Component {
   };
 
   render() {
-    const dishValue = {
+    const value = {
       dishList: this.state.dishList,
       dishTypes: this.state.dishTypes,
       dishAdd: this.state.dishAdd,
@@ -77,11 +83,11 @@ export class DishListProvider extends Component {
       setDishAddFalse: this.setDishAddFalse,
     };
     return (
-      <DishListContext.Provider value={dishValue}>
+      <DishListContext.Provider value={value}>
         {this.props.children}
       </DishListContext.Provider>
     );
   }
 }
 
-//TODO Update SHOULD be here?
+// //TODO Update SHOULD be here?

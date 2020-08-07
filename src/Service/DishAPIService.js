@@ -1,23 +1,27 @@
-import config from "../config";
-import TokenService from "./TokenService";
+//import TokenService from "./TokenService";
+import BASE_URL from '../config';
+import { API_KEY } from '../config';
 
 const DishAPIService = {
-  getDishes(id) {
-    return fetch(`${config.API_ENDPOINT}/dish/${id}`, {
+  getDish(id) {
+    return fetch(`${BASE_URL}/dish/${id}`, {
       headers: {
-        authorization: `bearer ${TokenService.getAuthToken()}`,
+        'Authorization': `Bearer ${API_KEY}`,
+        'content-type': 'application/json',
+        //authorization: `bearer ${TokenService.getAuthToken()}`,
       },
     }).then((res) =>
       !res.ok ? res.json().then((event) => Promise.reject(event)) : res.json()
     );
   },
 
-  postDish(dish, id) {
-    return fetch(`${config.API_ENDPOINT}/dish/${id}`, {
+  postDish(dish) {
+    return fetch(`${BASE_URL}/dish`, {
       method: "POST",
       headers: {
+        'Authorization': `Bearer ${API_KEY}`,
         "context-type": "application/json",
-        authorization: `bearer ${TokenService.getAuthToken()}`,
+        //authorization: `bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify(dish),
     }).then((res) =>
@@ -26,10 +30,12 @@ const DishAPIService = {
   },
 
   updateDish(dish, id) {
-    return fetch(`${config.API_ENDPOINT}/dish/${id}`, {
+    return fetch(`${BASE_URL}/dish/${id}`, {
       method: "PATCH",
       headers: {
-        authorization: `bearer ${TokenService.getAuthToken()}`,
+        'Authorization': `Bearer ${API_KEY}`,
+        'content-type': 'application/json',
+        //authorization: `bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify(dish),
     }).then((res) =>
@@ -38,15 +44,32 @@ const DishAPIService = {
   },
 
   deleteDish(dish, id) {
-    return fetch(`${config.API_ENDPOINT}/dish/${id}`, {
+    return fetch(`${BASE_URL}/dish/${id}`, {
       method: "DELETE",
       headers: {
+        'Authorization': `Bearer ${API_KEY}`,
         "content-type": "application/json",
-        authorization: `bearer ${TokenService.getAuthToken()}`,
+        //authorization: `bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify(dish),
     }).then((res) =>
       !res.ok ? res.json().then((event) => Promise.reject(event)) : res.json()
+    );
+  },
+
+  getAllTags(){
+    return fetch(`${BASE_URL}/tag`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${API_KEY}`,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(),
+    })
+    .then((res) =>
+      !res.ok ? 
+          res.json().then((event) => Promise.reject(event)) : 
+          res.json()
     );
   },
 };

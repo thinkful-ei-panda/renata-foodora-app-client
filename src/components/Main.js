@@ -6,11 +6,14 @@ export default function Main() {
     <nav>
       <div>
         <h2>Restaurant</h2>
-        <NavLink exact to="/rest-login">
+        <NavLink to="/rest-login">
           Login
         </NavLink>
-        <NavLink exact to="/rest-register">
+        <NavLink to="/rest-register">
           Register
+        </NavLink>
+        <NavLink to='/add-dish'>
+          Add Dish
         </NavLink>
       </div>
     </nav>

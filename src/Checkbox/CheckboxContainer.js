@@ -1,40 +1,51 @@
-import React from 'react';
-//import PropTypes from 'prop-types';
-import Checkboxes from '../Checkbox/Checkboxes';
-import Checkbox from '../Checkbox/Checkbox';
+import React from "react";
+import Checkbox from "../Checkbox/Checkbox";
+import DishAPIService from "../Service/DishAPIService";
 
 export default class CheckboxContainer extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       checkedItems: new Map(),
-    }
-
+      tags: [],
+    };
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
+  async handleChange(event) {
     const item = event.target.name;
     const isChecked = event.target.checked;
-    this.setState(prevState => 
-      ({ checkedItems: prevState.checkedItems.set(item, isChecked) }));
+    await this.setState((prevState) => ({
+      checkedItems: prevState.checkedItems.set(item, isChecked),
+    }));
+  }
+
+  async componentDidMount() {
+    await DishAPIService.getAllTags().then((tags) => {
+      this.setState({ tags: tags });
+    });
+
+    // initialize checkedItems map with "false" for all tags
+    this.state.tags.forEach((e) => {
+      this.setState((prevState) => ({
+        checkedItems: prevState.checkedItems.set(e.tag, false),
+      }));
+    });
   }
 
   render() {
     return (
       <React.Fragment>
-        {
-          Checkboxes.map(item => (
-            <label key={item.key}>
-              {item.name}
-              <Checkbox 
-              name={item.name} 
-              checked={this.state.checkedItems.get(item.name)} 
-              onChange={this.handleChange} />
-            </label>
-          ))
-        }
+        {this.state.tags.map((tag) => (
+          <label key={tag.id}>
+            {tag.tag}
+            <Checkbox
+              name={tag.tag}
+              checked={this.state.checkedItems.get(tag.tag)}
+              onChange={this.handleChange}
+            />
+          </label>
+        ))}
       </React.Fragment>
     );
   }

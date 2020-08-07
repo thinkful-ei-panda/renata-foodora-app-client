@@ -1,17 +1,24 @@
-import config from "../config";
+import { TOKEN_KEY, REST_ID_KEY, REST_NAME_KEY } from "../config";
 import jsonwebtoken from "jsonwebtoken";
 
 const TokenService = {
-  saveAuthToken(token) {
-    window.localStorage.setItem(config.TOKEN_KEY, token);
+
+  debugStorage() {
+    return 'restId=[' + window.localStorage.getItem(REST_ID_KEY) + '], restName=[' + window.localStorage.getItem(REST_NAME_KEY) + '], token=[' + window.localStorage.getItem(TOKEN_KEY) + ']';
   },
 
-  saveRestId(id) {
-    window.localStorage.setItem(config.ID_KEY, id);
+  saveAuthToken(token) {
+    window.localStorage.setItem(TOKEN_KEY, token);
+  },
+  saveRestId(restId) {
+    window.localStorage.setItem(REST_ID_KEY, restId);
+  },
+  saveRestName(restName) {
+    window.localStorage.setItem(REST_NAME_KEY, restName);
   },
 
   getAuthToken() {
-    return window.localStorage.getItem(config.TOKEN_KEY);
+    return window.localStorage.getItem(TOKEN_KEY);
   },
 
   getAuthData() {
@@ -21,15 +28,20 @@ const TokenService = {
   },
 
   getRestID() {
-    return window.localStorage.getItem(config.ID_KEY);
+    return window.localStorage.getItem(REST_ID_KEY);
+  },
+  getRestName() {
+    return window.localStorage.getItem(REST_NAME_KEY);
   },
 
   clearAuthToken() {
-    window.localStorage.removeItem(config.TOKEN_KEY);
+    window.localStorage.removeItem(TOKEN_KEY);
   },
-
   clearRestId() {
-    window.localStorage.removeItem(config.ID_KEY);
+    window.localStorage.removeItem(REST_ID_KEY);
+  },
+  clearRestName() {
+    window.localStorage.removeItem(REST_NAME_KEY);
   },
 
   hasAuthToken() {
