@@ -18,17 +18,19 @@ export default class FullLogin extends React.Component{
         };
       }
     
-      debugStuff = () => {
-        console.log('-- dumping current state=' + JSON.stringify(this.state));
-        console.log('-- dumping current local storage=' + TokenService.debugStorage());
-      }
-      //TODO  DELETE LATER ON
+      // debugStuff = () => {
+      //   console.log('-- dumping current state=' + JSON.stringify(this.state));
+      //   console.log('-- dumping current local storage=' + TokenService.debugStorage());
+      // }
+      // //TODO  DELETE LATER ON
     
       doLogin = (restId, restName) => {
         this.setState({
           loggedInRestaurantId: restId,
           loggedInRestaurantName: restName,
-        }, this.debugStuff);
+        }, 
+        //this.debugStuff
+        );
       };
     
       doLogout = () => {
