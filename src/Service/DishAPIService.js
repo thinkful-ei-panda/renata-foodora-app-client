@@ -20,12 +20,12 @@ const DishAPIService = {
       method: "POST",
       headers: {
         'Authorization': `Bearer ${API_KEY}`,
-        "context-type": "application/json",
-        //authorization: `bearer ${TokenService.getAuthToken()}`,
+        "content-type": "application/json",
       },
       body: JSON.stringify(dish),
-    }).then((res) =>
-      !res.ok ? res.json().then((event) => Promise.reject(event)) : res.json()
+    })
+    .then((res) =>
+      !res.ok ? res.json().then((event) => console.log('error?=' + JSON.stringify(event))).then((event) => Promise.reject(event)) : res.json()
     );
   },
 

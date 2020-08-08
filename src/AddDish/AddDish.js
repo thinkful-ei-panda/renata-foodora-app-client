@@ -1,66 +1,57 @@
 import React, { Component } from "react";
-import DishListContext from "../Context/DishListContext";
+import DishContext from "../Context/DishListContext";
 import TokenService from "../Service/TokenService";
 import DishAPIService from "../Service/DishAPIService";
 import CheckboxContainer from "../Checkbox/CheckboxContainer";
-//import ScaleLoader from "react-spinners/ScaleLoader";
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 export default class AddDish extends Component {
   state = {
     name: "",
     price: "",
+    tag_id: [],
+    error: null,
     loading: false,
+    restaurant_id: TokenService.getRestID(),
   };
 
-  static contextType = DishListContext;
+  static contextType = DishContext;
 
-  handleChange = (event) => {
+  handleDishChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
     });
   };
- 
+
   handleDishSubmit = (event) => {
     event.preventDefault();
 
+    const restaurant_id = TokenService.getRestID();
+
     this.setState({
-      //loading: true,
+      loading: true,
     });
 
-    const restaurant_id = TokenService.getRestID();
-    const { dishList } = this.context;
-
-    const dish = {
-        name: this.state.name,
-        price: Number(this.state.price),
+    DishAPIService.postDish({
+      restaurant_id: restaurant_id,
+      name: this.state.name,
+      price: this.state.price,
+      tag_id: this.state.tag_id,
+    }).then((data) => {
+      this.setState({
+        loading: true,
+        name: "",
+        price: "",
         restaurant_id,
-    };
-
-    DishAPIService.postDish(dish)
-      // name: this.state.name,
-      // price: this.state.price,
-      // restaurant_id,
-    
-      .then(this.context.setDishList([...dishList, dish]))
-      .then(this.context.setDishAddTrue());
-      console.log('THIS IS JUST THE CONTEXT' + JSON.stringify(this.context.setDishList));
-  
-//TODO FIX AND CLEAR IT
-    // const { dishList } = this.context;
-    // const restaurant_id = TokenService.getRestID();
-    // console.log("THIS IS PASSING");
-    // console.log(this.context);
-    // const dish = {
-    //   name: this.state.name,
-    //   price: Number(this.state.price),
-    //   restaurant_id,
-    // };
-    // //TODO need to add tag here
-    // console.log("THIS IS PASSING SECOND");
-    // DishAPIService.postDish(dish, restaurant_id)
-    //   .then(this.context.setDishList([...dishList, dish]))
-    //   .then(this.context.setDishAddTrue());
-  };
+        tag_id: [],
+      });
+      this.context.saveDishName(data.name);
+      this.context.savePrice(data.price);
+      this.context.saveTagList(data.tag);
+      this.context.handleLoginState(true);
+      this.props.history.push("/");
+    });
+  }; 
 
   // goBack = () => {
   //   this.context.setDishAddFalse();
@@ -68,7 +59,7 @@ export default class AddDish extends Component {
   // };
 
   render() {
-    //const { error, loading } = this.state;
+    const { error, loading } = this.state;
     return (
       <main className="dish_main">
         <form
@@ -76,8 +67,9 @@ export default class AddDish extends Component {
           className="addDish-form"
           onSubmit={this.handleDishSubmit}
         >
+           <div role="alert">{error && <p className="error">{error}</p>}</div>
           <div>
-            <h3>Search for your dish:</h3>  
+            <h3>Add a dish:</h3>
           </div>
           <div className="dish-name">
             <label htmlFor="dish-name">Dish Name:</label>
@@ -86,7 +78,7 @@ export default class AddDish extends Component {
               name="name"
               id="dish-name"
               value={this.state.name}
-              onChange={this.handleChange}
+              onChange={this.handleDishChange}
               required
             />
           </div>
@@ -97,7 +89,7 @@ export default class AddDish extends Component {
               name="price"
               id="dish-price"
               value={this.state.price}
-              onChange={this.handleChange}
+              onChange={this.handleDishChange}
               required
             />
           </div>
@@ -106,25 +98,20 @@ export default class AddDish extends Component {
             {/* TODO WILL NEED TO RESTRICT TO MAX 5 */}
             <CheckboxContainer />
             <button type="submit" onSubmit={this.handleDishSubmit}>
-              Save
+              Add New Dish
             </button>
+            {loading && (
+              <div className="loading-screen">
+                <ScaleLoader size={35} color={"#067368"} loading={loading} />
+                {/* TODO remember to change color  */}
+              </div>
+            )}
           </div>
         </form>
-        <button type="button" className="go-back" onClick={this.goBack}>
+        {/* <button type="button" className="go-back" onClick={this.goBack}>
           Go Back
-        </button>
+        </button> */}
       </main>
     );
   }
 }
-
-
-
-
-// {loading && (
-//   <div className="loading-screen">
-//     <ScaleLoader size={35} color={"#067368"} loading={loading} />
-//     {/* TODO remember to change color  */}
-//   </div>
-// )}
-{/* <div role="alert">{error && <p className="error">{error}</p>}</div> */}

@@ -50,3 +50,11 @@ export default class CheckboxContainer extends React.Component {
     );
   }
 }
+
+
+//TODO 1) context of checkbox
+//TODO 2) checkbox container needs to come with array of integers tag_id
+//TODO 3) get checkedItems out of checkedItems map
+//TODO 4) use keys to look up ids
+//TODO 5) the result is array of ids, PUT IN CONTEXT
+//TODO 6) DIsh has to read the array ids and send to the backend

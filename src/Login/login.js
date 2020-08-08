@@ -71,7 +71,7 @@ export default class Login extends React.Component {
             <div className="password">
               <label htmlFor="login-form-password">Password: </label>
               <input
-                type="text"
+                type="password"
                 name="password"
                 id="login-form-password"
                 value={this.state.password}

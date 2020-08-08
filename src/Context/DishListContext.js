@@ -1,48 +1,52 @@
 import React from "react";
 
-export const DishListContext = React.createContext({
-  dishList: [],
+const DishContext = React.createContext({
+  name: '',
+  price: 'price',
+  tag_id: [],
+  loading: false,
   error: null,
+  saveDishName: () => {},
+  savePrice: () => {},
+  saveTagList: () => {},
+  handleLoginState: () => {},
+  removeDish: () => {},
   setError: () => {},
   clearError: () => {},
-  setDishList: () => {},
   setDishAddTrue: () => {},
   setDishAddFalse: () => {},
-  removeElement: () => {},
-  remoteDishType: () => {},
-  setDishTypes: () => {},
-  removeDish: () => {},
 });
 
-export default DishListContext;
+export default DishContext;
 
-export class DishListProvider extends React.Component {
+export class DishProvider extends React.Component {
   state = {
-    dishList: [],
-    dishTypes: [],
-    dishAdd: false,
+    name: '',
+    price: '',
+    tag_id: [],
+    loading: false,
     error: null,
   };
 
-  setDishList = (dishList) => {
-    this.setState({ dishList });
+  saveDishName = (name) => {
+    this.setState({ name, });
   };
 
-  removeElement(array, element) {
-    let index = array.indexOf(element);
-    if (index > -1) {
-      array.splice(index, 1);
-    }
-  }
-
-  remoteDishType = (dishID) => {
-    this.removeDish(this.state.dishTypes, dishID);
+  savePrice = (price) => {
+    this.setState({ price, });
   };
 
-  setDishTypes = (newDish) => {
-    this.setState({
-      dishTypes: newDish,
-    });
+  saveTagList = (tagList) => {
+    this.setState({ tagList, });
+  };
+
+  handleLoginState = (isLogged) => {
+    this.setState({ isLogged, });
+  };
+
+  remoteDish = (id) => {
+    const remDish = this.state.saveDishName.filter((event)=> event.id !== id);
+    this.setState({ name: remDish});
   };
 
   setError = (error) => {
@@ -52,11 +56,6 @@ export class DishListProvider extends React.Component {
 
   clearError = () => {
     this.setState({ error: null });
-  };
-
-  removeDish = (id) => {
-    const newDishes = this.state.dishList.filter((event) => event.id !== id);
-    this.setState({ dishList: newDishes });
   };
 
   setDishAddTrue = () => {
@@ -69,23 +68,24 @@ export class DishListProvider extends React.Component {
 
   render() {
     const value = {
-      dishList: this.state.dishList,
-      dishTypes: this.state.dishTypes,
-      dishAdd: this.state.dishAdd,
+      name: this.state.name,
+      price: this.state.price,
+      //tag: this.state.tag,
       error: this.state.error,
+      saveDishName: this.saveDishName,
+      savePrice: this.savePrice,
+      saveTagList: this.saveTagList,
+      handleLoginState: this.handleLoginState,
+      removeDish: this.remoteDish,
       setError: this.setError,
       clearError: this.clearError,
-      setDishList: this.setDishList,
-      removeDish: this.removeDish,
-      setDishTypes: this.setDishTypes,
-      removeDishType: this.remoteDishType,
       setDishAddTrue: this.setDishAddTrue,
       setDishAddFalse: this.setDishAddFalse,
     };
     return (
-      <DishListContext.Provider value={value}>
+      <DishContext.Provider value={value}>
         {this.props.children}
-      </DishListContext.Provider>
+      </DishContext.Provider>
     );
   }
 }
