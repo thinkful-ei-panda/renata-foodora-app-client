@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import DishContext from "../Context/DishListContext";
 import TokenService from "../Service/TokenService";
 import DishAPIService from "../Service/DishAPIService";
 import CheckboxContainer from "../Checkbox/CheckboxContainer";
 import ScaleLoader from "react-spinners/ScaleLoader";
 
-export default class AddDish extends Component {
+export default class AddDish extends React.Component {
   state = {
     name: "",
     price: "",

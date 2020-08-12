@@ -5,14 +5,17 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { DishProvider } from './Context/DishListContext';
 import { RestContextProvider } from './Context/RestContext';
+//import { CheckboxProvider } from './Context/CheckboxContext';
 
 ReactDOM.render(
   <BrowserRouter>
-    <RestContextProvider>
-      <DishProvider> 
-        <App />
-      </DishProvider>
-    </RestContextProvider>
+  {/* <CheckboxProvider> */}
+      <RestContextProvider>
+        <DishProvider> 
+            <App />
+        </DishProvider>
+      </RestContextProvider>
+    {/* </CheckboxProvider> */}
   </BrowserRouter>,
   document.getElementById('root')
 );

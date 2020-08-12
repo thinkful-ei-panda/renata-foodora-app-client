@@ -15,6 +15,9 @@ export default function Main() {
         <NavLink to='/add-dish'>
           Add Dish
         </NavLink>
+        <NavLink to='/search'>
+          Search
+        </NavLink>
       </div>
     </nav>
   );

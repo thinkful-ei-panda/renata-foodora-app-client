@@ -1,13 +1,13 @@
 //import TokenService from "./TokenService";
-import BASE_URL from '../config';
-import { API_KEY } from '../config';
+import BASE_URL from "../config";
+import { API_KEY } from "../config";
 
 const DishAPIService = {
   getDish(id) {
     return fetch(`${BASE_URL}/dish/${id}`, {
       headers: {
         'Authorization': `Bearer ${API_KEY}`,
-        'content-type': 'application/json',
+        "content-type": "application/json",
         //authorization: `bearer ${TokenService.getAuthToken()}`,
       },
     }).then((res) =>
@@ -23,9 +23,13 @@ const DishAPIService = {
         "content-type": "application/json",
       },
       body: JSON.stringify(dish),
-    })
-    .then((res) =>
-      !res.ok ? res.json().then((event) => console.log('error?=' + JSON.stringify(event))).then((event) => Promise.reject(event)) : res.json()
+    }).then((res) =>
+      !res.ok
+        ? res
+            .json()
+            .then((event) => console.log("error?=" + JSON.stringify(event)))
+            .then((event) => Promise.reject(event))
+        : res.json()
     );
   },
 
@@ -34,7 +38,7 @@ const DishAPIService = {
       method: "PATCH",
       headers: {
         'Authorization': `Bearer ${API_KEY}`,
-        'content-type': 'application/json',
+        "content-type": "application/json",
         //authorization: `bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify(dish),
@@ -57,19 +61,16 @@ const DishAPIService = {
     );
   },
 
-  getAllTags(){
+  getAllTags() {
     return fetch(`${BASE_URL}/tag`, {
-      method: 'GET',
+      method: "GET",
       headers: {
         'Authorization': `Bearer ${API_KEY}`,
         "content-type": "application/json",
       },
       body: JSON.stringify(),
-    })
-    .then((res) =>
-      !res.ok ? 
-          res.json().then((event) => Promise.reject(event)) : 
-          res.json()
+    }).then((res) =>
+      !res.ok ? res.json().then((event) => Promise.reject(event)) : res.json()
     );
   },
 };

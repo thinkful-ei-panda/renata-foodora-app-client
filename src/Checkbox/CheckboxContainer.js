@@ -9,7 +9,7 @@ export default class CheckboxContainer extends React.Component {
       checkedItems: new Map(),
       tags: [],
     };
-    this.handleChange = this.handleChange.bind(this);
+    //this.handleChange = this.handleChange.bind(this);
   }
 
   async handleChange(event) {

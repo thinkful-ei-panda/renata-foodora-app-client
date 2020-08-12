@@ -50,7 +50,7 @@ export class DishProvider extends React.Component {
   };
 
   setError = (error) => {
-    console.lof(error);
+    console.log(error);
     this.setState({ error });
   };
 
