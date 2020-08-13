@@ -1,13 +1,16 @@
 import React from 'react';
 
-const CheckboxContext = React.createContext({
+const DishCheckboxContext = React.createContext({
     tags: [],   
     error: null, 
+    saveTag: () => {},
+    setError: () => {},
+    clearError: () => {},
 });
 
-export default CheckboxContext;
+export default DishCheckboxContext;
 
-export class CheckboxProvider extends React.Component{
+export class DishCheckboxProvider extends React.Component{
 
     state = {
         tag: [],
@@ -36,9 +39,9 @@ export class CheckboxProvider extends React.Component{
             clearError: this.clearError,
         };
         return(
-            <CheckboxProvider value={value}>
+            <DishCheckboxProvider value={value}>
                 {this.props.children}
-            </CheckboxProvider>
+            </DishCheckboxProvider>
         );
     }
 }

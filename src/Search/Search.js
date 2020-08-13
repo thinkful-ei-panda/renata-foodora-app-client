@@ -1,14 +1,25 @@
 import React from "react";
 import SearchAPIService from '../Service/SearchAPIService';
+import SearchCheckboxContainer from '../SearchCheckbox/SearchCheckboxContainer';
+import { withRouter } from 'react-router-dom';
+// import SearchCheckboxContext from '../Context/SearchCheckboxContext';
+//TODO IF you wanna use context, go to index.js
 
 
-export default class Search extends React.Component {
+ class Search extends React.Component {
   state = {
     tag: [],
-    price: "",
+    price: "0",
     name: "",
     searchResults: [],
   };
+
+  //static contextType = SearchCheckboxContext;
+
+  checkboxChecked = () => {
+  console.log("Search -> checkboxChecked -> checkboxChecked");
+    //TODO call setState to call the tag inside here
+  }
 
   handleSearchChange = (event) => {
     console.log("Search -> handleSearchChange -> event.target.name", event.target.name);
@@ -34,18 +45,20 @@ componentDidUpdate() {
       // loading: true,
     });
 
+    console.log("LINE 39 Search -> handleSearchSubmit -> tag_id", this.state.tag);
+
     SearchAPIService.getSearchResult({
-      tag: this.state.tag_id,
+      tag: this.state.tag,
       price: this.state.price,
       name: this.state.name,
     }).then((json) => {
     console.log("Search -> handleSearchSubmit -> json", JSON.stringify(json));
       this.setState({
         tag: [],
-        price: "",
         name: "",
         searchResults: json,
       });
+      //this.context.saveTag(json.tag);
       this.props.history.push("/");
     });
 
@@ -55,60 +68,84 @@ componentDidUpdate() {
   render() {
     return (
       <div>
+        <h2>SEARCH</h2>
         <h4>Choose the tags: (up to 5)</h4>
-        {/* <CheckboxContainer /> */}
+        <div>
+            <SearchCheckboxContainer checkboxCallback = {this.checkboxChecked}/>
+        </div>
+      
         <h4>Choose a price range:</h4>
         <form
         id='search'
         onSubmit={this.handleSearchSubmit}
         >
           <fieldset>
-            <legend>In dollars:</legend>
+            <legend></legend>
+            
+            <input 
+            type="radio" 
+            id="0" 
+            name="price" 
+            value="0" 
+            checked={this.state.price === "0"}
+            onChange={this.handleSearchChange}
+            />
+            <label htmlFor="0"> Any price</label>
+
             <input 
             type="radio" 
             id="1" 
             name="price" 
             value="1" 
+            checked={this.state.price === "1"}
             onChange={this.handleSearchChange}
             />
-
             <label htmlFor="1"> $1 - $10</label>
+
+            
             <input 
             type="radio" 
             id="2" 
             name="price" 
-            value="2" 
+            value="2"
+            checked={this.state.price === "2"} 
             onChange={this.handleSearchChange}
             />
-
             <label htmlFor="2"> $11 - $40</label>
+
+            
             <input 
             type="radio" 
             id="3" 
             name="price" 
             value="3" 
+            checked={this.state.price === "3"}
             onChange={this.handleSearchChange}
             />
-
             <label htmlFor="3"> $41 - $60</label>
+
+            
             <input 
             type="radio" 
             id="4" 
             name="price" 
             value="4" 
+            checked={this.state.price === "4"}
             onChange={this.handleSearchChange}
             />
-
             <label htmlFor="4"> $61 - $80</label>
+
+            
             <input 
             type="radio" 
             id="5" 
             name="price" 
             value="5" 
+            checked={this.state.price === "5"}
             onChange={this.handleSearchChange}
             />
+            <label htmlFor="4"> $81 or above</label>
 
-            <label htmlFor="5"> $81 - or above</label>
           </fieldset>
           {/* DISH NAME */}
             <label htmlFor="search-crit">
@@ -128,18 +165,20 @@ componentDidUpdate() {
           Search
         </button>
         </form>
-        <div>
+        <div style={{ color: 'white' }}>
           
         {this.state.searchResults.map((result) => (
           <label key={result.id}>
-            <h2>Dish:</h2>
-            <h5>{result.name}</h5>
-            <h3>Restaurant Information:</h3>
-            <h6>
-              {result.restaurantname} | {result.phone}
-            </h6>
-            <h6>$ {result.price}</h6>
-            <h6>#{result.tag_names}</h6>
+            <h4>Dish: <em>{result.name}</em></h4>
+          
+            { result.name.errorMessage &&
+              <h3 className="error"> { this.state.errorMessage } </h3> }
+
+            <h5>Restaurant Information: {result.restaurantname} | {result.phone}</h5>
+  
+            <h5>$ {result.price}</h5>
+            <h5>#{result.tag_names}</h5>
+            <h5>------------------------------------</h5>
           </label>
         ))}
         </div>
@@ -147,3 +186,6 @@ componentDidUpdate() {
     );
   }
 }
+
+
+export default withRouter(Search);

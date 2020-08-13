@@ -1,15 +1,15 @@
 import React from "react";
-import Checkbox from "../Checkbox/Checkbox";
-import DishAPIService from "../Service/DishAPIService";
+import SearchCheckbox from "../SearchCheckbox/SearchCheckbox";
+import SearchAPIService from "../Service/SearchAPIService";
 
-export default class CheckboxContainer extends React.Component {
+export default class SearchCheckboxContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       checkedItems: new Map(),
       tags: [],
     };
-    //this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   async handleChange(event) {
@@ -18,10 +18,11 @@ export default class CheckboxContainer extends React.Component {
     await this.setState((prevState) => ({
       checkedItems: prevState.checkedItems.set(item, isChecked),
     }));
+    this.props.checkboxCallback();
   }
 
   async componentDidMount() {
-    await DishAPIService.getAllTags().then((tags) => {
+    await SearchAPIService.getAllTags().then((tags) => {
       this.setState({ tags: tags });
     });
 
@@ -39,7 +40,7 @@ export default class CheckboxContainer extends React.Component {
         {this.state.tags.map((tag) => (
           <label key={tag.id}>
             {tag.tag}
-            <Checkbox
+            <SearchCheckbox
               name={tag.tag}
               checked={this.state.checkedItems.get(tag.tag)}
               onChange={this.handleChange}
@@ -51,10 +52,3 @@ export default class CheckboxContainer extends React.Component {
   }
 }
 
-
-//TODO 1) context of checkbox
-//TODO 2) checkbox container needs to come with array of integers tag_id
-//TODO 3) get checkedItems out of checkedItems map
-//TODO 4) use keys to look up ids
-//TODO 5) the result is array of ids, PUT IN CONTEXT
-//TODO 6) DIsh has to read the array ids and send to the backend

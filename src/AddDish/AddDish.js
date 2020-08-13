@@ -1,8 +1,9 @@
 import React from "react";
-import DishContext from "../Context/DishListContext";
+//import DishContext from "../Context/DishListContext";
+//TODO IF you wanna use context, go to index.js
 import TokenService from "../Service/TokenService";
 import DishAPIService from "../Service/DishAPIService";
-import CheckboxContainer from "../Checkbox/CheckboxContainer";
+import DishCheckboxContainer from '../DishCheckbox/DishCheckboxContainer';
 import ScaleLoader from "react-spinners/ScaleLoader";
 
 export default class AddDish extends React.Component {
@@ -15,7 +16,7 @@ export default class AddDish extends React.Component {
     restaurant_id: TokenService.getRestID(),
   };
 
-  static contextType = DishContext;
+  //static contextType = DishContext;
 
   handleDishChange = (event) => {
     this.setState({
@@ -96,7 +97,7 @@ export default class AddDish extends React.Component {
           <div className="dish-select-button-div">
             <label htmlFor="tag">Tag: (up to 5) </label>
             {/* TODO WILL NEED TO RESTRICT TO MAX 5 */}
-            <CheckboxContainer />
+            <DishCheckboxContainer />
             <button type="submit" onSubmit={this.handleDishSubmit}>
               Add New Dish
             </button>
