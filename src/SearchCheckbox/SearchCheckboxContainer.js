@@ -14,11 +14,15 @@ export default class SearchCheckboxContainer extends React.Component {
 
   async handleChange(event) {
     const item = event.target.name;
+    console.log("SearchCheckboxContainer -> handleChange -> item", item) //name
     const isChecked = event.target.checked;
     await this.setState((prevState) => ({
       checkedItems: prevState.checkedItems.set(item, isChecked),
     }));
-    this.props.checkboxCallback();
+    //console.log("SearchCheckboxContainer -> handleChange -> checkedItems", this.state.checkedItems) //check or unchecked
+    //console.log("SearchCheckboxContainer -> constructor -> tags", this.state.tags) //tags ids 
+    let itemID = this.state.tags.filter(tag => tag.tag === item)[0].id;
+    this.props.checkboxCallback(itemID, isChecked);
   }
 
   async componentDidMount() {
@@ -39,7 +43,7 @@ export default class SearchCheckboxContainer extends React.Component {
       <React.Fragment>
         {this.state.tags.map((tag) => (
           <label key={tag.id}>
-            {tag.tag}
+            {tag.tag} ({tag.id})
             <SearchCheckbox
               name={tag.tag}
               checked={this.state.checkedItems.get(tag.tag)}

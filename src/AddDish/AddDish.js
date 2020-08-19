@@ -24,6 +24,14 @@ export default class AddDish extends React.Component {
     });
   };
 
+  handleDishUpdate = (event) =>{
+    event.preventDefault();
+    DishAPIService.updateDish({
+      price: this.state.price,
+    })
+  }
+  //TODO COME BACK TO THIS LATER!!!!!!!!!!!!!!!
+
   handleDishSubmit = (event) => {
     event.preventDefault();
 
@@ -100,6 +108,9 @@ export default class AddDish extends React.Component {
             <DishCheckboxContainer />
             <button type="submit" onSubmit={this.handleDishSubmit}>
               Add New Dish
+            </button>
+            <button type="submit" onSubmit={this.handleDishUpdate}>
+              Update Dish
             </button>
             {loading && (
               <div className="loading-screen">

@@ -38,7 +38,7 @@ export default class DishCheckboxContainer extends React.Component {
       <React.Fragment>
         {this.state.tags.map((tag) => (
           <label key={tag.id}>
-            {tag.tag}
+            {tag.tag} {tag.id}
             <DishCheckbox
               name={tag.tag}
               checked={this.state.checkedItems.get(tag.tag)}

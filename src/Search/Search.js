@@ -16,10 +16,24 @@ import { withRouter } from 'react-router-dom';
 
   //static contextType = SearchCheckboxContext;
 
-  checkboxChecked = () => {
-  console.log("Search -> checkboxChecked -> checkboxChecked");
-    //TODO call setState to call the tag inside here
-  }
+  checkboxChecked = (itemID, itemChecked) => {
+    console.log("Search -> checkboxChecked -> 1) itemID", itemID);
+    console.log("Search -> checkboxChecked -> 2) itemChecked", itemChecked);
+    let tempArray = this.state.tag;
+
+    console.log("Search -> checkboxChecked -> tempArray BEFORE IF", JSON.stringify(tempArray));
+
+    if (itemChecked){
+      tempArray.push(itemID);
+    } else {
+      tempArray = tempArray.filter(tagID => tagID !== itemID);
+    }
+    console.log("Search -> checkboxChecked -> tempArray AFTER IF", JSON.stringify(tempArray));
+
+    this.setState ({
+      tag: tempArray
+    });
+  };
 
   handleSearchChange = (event) => {
     console.log("Search -> handleSearchChange -> event.target.name", event.target.name);
@@ -32,12 +46,12 @@ import { withRouter } from 'react-router-dom';
   };
 
 componentDidUpdate() {
-  console.log("Search -> handleSearchChange -> STATE", JSON.stringify(this.state))
+  console.log("Search -> componentDidUpdate -> STATE", JSON.stringify(this.state))
 }
 
   handleSearchSubmit = (event) => {
 
-    console.log('THIS HAS BEEN CALLED !!!! FIRST (search.js)');
+    //console.log('THIS HAS BEEN CALLED !!!! FIRST (search.js)');
 
     event.preventDefault();
 
@@ -54,15 +68,15 @@ componentDidUpdate() {
     }).then((json) => {
     console.log("Search -> handleSearchSubmit -> json", JSON.stringify(json));
       this.setState({
-        tag: [],
-        name: "",
+//        tag: [],
+//        name: "",
         searchResults: json,
       });
       //this.context.saveTag(json.tag);
       this.props.history.push("/");
     });
 
-    console.log('THIS IS HERE!!!! SECOND CALLED!!!(search.js)');
+    //console.log('THIS IS HERE!!!! SECOND CALLED!!!(search.js)');
   }; 
 
   render() {
