@@ -1,6 +1,4 @@
 import React from "react";
-//import DishContext from "../Context/DishListContext";
-//TODO IF you wanna use context, go to index.js
 import TokenService from "../Service/TokenService";
 import DishAPIService from "../Service/DishAPIService";
 import DishCheckboxContainer from '../DishCheckbox/DishCheckboxContainer';
@@ -15,8 +13,6 @@ export default class AddDish extends React.Component {
     loading: false,
     restaurant_id: TokenService.getRestID(),
   };
-
-  //static contextType = DishContext;
 
   handleDishChange = (event) => {
     this.setState({
