@@ -161,7 +161,7 @@ class Search extends React.Component {
               checked={this.state.price === "5"}
               onChange={this.handleSearchChange}
             />
-            <label htmlFor="4"> $81 or above</label>
+            <label htmlFor="5"> $81 or above</label>
           </fieldset>
           {/* DISH NAME */}
           <label htmlFor="search-crit">

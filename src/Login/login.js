@@ -43,6 +43,8 @@ export default class Login extends React.Component {
       TokenService.saveRestId(data.restaurant_id);
       TokenService.saveRestName(data.name);
       this.props.loginAction(data.restaurant_id, data.name);
+    }).catch((res) => {
+      this.setState({ error: res.error, loading: null });
     });
   };
 
@@ -65,7 +67,6 @@ export default class Login extends React.Component {
                 id="login-form-username"
                 value={this.state.username}
                 onChange={this.handleRestChange}
-                required
               ></input>
             </div>
             <div className="password">
@@ -76,7 +77,6 @@ export default class Login extends React.Component {
                 id="login-form-password"
                 value={this.state.password}
                 onChange={this.handleRestChange}
-                required
               ></input>
             </div>
             <button 

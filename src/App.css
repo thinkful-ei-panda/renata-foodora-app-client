@@ -3,7 +3,7 @@
   margin: 20px;
   padding: 20px;
   background-color: #222629;
-  color: #57ba98;
+  color: #61dafb;
   font-family: 'Playfair Display', serif;
   font-size: 20px;
 }
@@ -47,6 +47,10 @@ main{
 
 .search-tag-list, .dish-tag-list{
   margin-right: 15px;
+}
+
+.error{
+  color: #f83c02;
 }
 
 @media (prefers-reduced-motion: no-preference) {

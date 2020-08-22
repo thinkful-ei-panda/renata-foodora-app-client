@@ -70,7 +70,7 @@ export class DishProvider extends React.Component {
     const value = {
       name: this.state.name,
       price: this.state.price,
-      //tag: this.state.tag,
+      tag_id: this.state.tag_id,
       error: this.state.error,
       saveDishName: this.saveDishName,
       savePrice: this.savePrice,
@@ -90,4 +90,3 @@ export class DishProvider extends React.Component {
   }
 }
 
-// //TODO Update SHOULD be here?

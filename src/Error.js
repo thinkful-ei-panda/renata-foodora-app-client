@@ -1,27 +1,27 @@
 import React from 'react';
 
-class Error extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            theError: false 
-        };
-    }
+export default class Error extends React.Component {
 
-    static getStateFromError(error) { 
-        return {theError: true};
-    }
+  state = { 
+      hasError: false, 
+      error: null 
+    };
 
-    render() {
-        if (this.state.theError){
-            return (
-                <h2 className='AppError'>
-                    Oops! Something went wrong. Please refresh the page or try again later.
-                </h2>
-            );
-        }
-        return this.props.children;
+  static getDerivedStateFromError(error) {
+    return { 
+        hasError: true, 
+        error: error.message 
+    };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.log(error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <div>{this.state.error}</div>;
     }
+    return this.props.children;
+  }
 }
-
-export default Error;

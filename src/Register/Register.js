@@ -44,14 +44,16 @@ export default class Register extends React.Component {
         password: '',
         name: '',
         phone: '',
-      });
+      })      
       TokenService.saveAuthToken(data.authToken);
       TokenService.saveRestId(data.restaurant_id);
       this.context.saveRestName(data.name);
       this.props.onRegistrationSuccess();
       this.context.handleRegisteredState(true);
-      this.props.history.push('/');
-    })
+      this.props.history.push('/restaurant-home');
+    }).catch((res) => {
+      this.setState({ error: res.error, loading: null });
+    });
   };
 
   render() {
@@ -76,7 +78,6 @@ export default class Register extends React.Component {
                 id="register-form-username"
                 value={this.state.username}
                 onChange={this.handleRegChange}
-                required
               ></input>
             </div>
             <div className="password">
@@ -87,7 +88,6 @@ export default class Register extends React.Component {
                 id="register-form-password"
                 value={this.state.password}
                 onChange={this.handleRegChange}
-                required
               ></input>
             </div>
             <div className="restname">
@@ -98,7 +98,6 @@ export default class Register extends React.Component {
                 id="register-form-restname"
                 value={this.state.name}
                 onChange={this.handleRegChange}
-                required
               ></input>
             </div>
             <div className="phone">
@@ -109,7 +108,6 @@ export default class Register extends React.Component {
                 id="register-form-phone"
                 value={this.state.phone}
                 onChange={this.handleRegChange}
-                required
               ></input>
             </div>
             <button type="submit" onSubmit={this.handleRegSubmit}>

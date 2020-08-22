@@ -13,12 +13,14 @@ class App extends React.Component {
     return (
       <div className="App">
         {/* Header */}
+        <Error>
         <header>
           <h1>
             <Link style={{ color: 'white' }} to="/">Foodora</Link> 
           </h1>
           <h2>An app for dietary restrictions</h2>
         </header>
+        </Error>
 
         {/* Nav */}
         <Error>

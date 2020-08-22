@@ -18,6 +18,9 @@ export default class DishCheckboxContainer extends React.Component {
     await this.setState((prevState) => ({
       checkedItems: prevState.checkedItems.set(item, isChecked),
     }));
+
+    let itemID = this.state.tags.filter(tag => tag.tag === item)[0].id;
+    this.props.checkboxCallback(itemID, isChecked);
   }
 
   async componentDidMount() {

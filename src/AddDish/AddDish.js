@@ -3,8 +3,10 @@ import TokenService from "../Service/TokenService";
 import DishAPIService from "../Service/DishAPIService";
 import DishCheckboxContainer from '../DishCheckbox/DishCheckboxContainer';
 import ScaleLoader from "react-spinners/ScaleLoader";
+import DishContext from "../Context/DishListContext";
+import { withRouter } from 'react-router-dom';
 
-export default class AddDish extends React.Component {
+class AddDish extends React.Component {
   state = {
     name: "",
     price: "",
@@ -14,19 +16,38 @@ export default class AddDish extends React.Component {
     restaurant_id: TokenService.getRestID(),
   };
 
+  static contextType = DishContext;
+
+  checkboxChecked = (itemID, itemChecked) => {
+    console.log("Search -> checkboxChecked -> 1) itemID", itemID);
+    console.log("Search -> checkboxChecked -> 2) itemChecked", itemChecked);
+    let tempArray = this.state.tag_id;
+
+    console.log(
+      "Search -> checkboxChecked -> tempArray BEFORE IF",
+      JSON.stringify(tempArray)
+    );
+
+    if (itemChecked) {
+      tempArray.push(itemID);
+    } else {
+      tempArray = tempArray.filter((tagID) => tagID !== itemID);
+    }
+    console.log(
+      "Search -> checkboxChecked -> tempArray AFTER IF",
+      JSON.stringify(tempArray)
+    );
+
+    this.setState({
+      tag_id: tempArray,
+    });
+  };
+
   handleDishChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
     });
   };
-
-  handleDishUpdate = (event) =>{
-    event.preventDefault();
-    DishAPIService.updateDish({
-      price: this.state.price,
-    })
-  }
-  //TODO COME BACK TO THIS LATER!!!!!!!!!!!!!!!
 
   handleDishSubmit = (event) => {
     event.preventDefault();
@@ -52,11 +73,13 @@ export default class AddDish extends React.Component {
       });
       this.context.saveDishName(data.name);
       this.context.savePrice(data.price);
-      this.context.saveTagList(data.tag);
+      this.context.saveTagList(data.tag_id);
       this.context.handleLoginState(true);
       this.props.history.push("/");
+    }).catch((res) => {
+      this.setState({ error: res.error, loading: null });
     });
-  }; 
+  };
 
   // goBack = () => {
   //   this.context.setDishAddFalse();
@@ -72,10 +95,10 @@ export default class AddDish extends React.Component {
           className="addDish-form"
           onSubmit={this.handleDishSubmit}
         >
-           <div role="alert">{error && <p className="error">{error}</p>}</div>
           <div>
             <h3>Add a dish:</h3>
           </div>
+          <div role="alert">{error && <p className="error">{error}</p>}</div>
           <div className="dish-name">
             <label htmlFor="dish-name">Dish Name:</label>
             <input
@@ -84,7 +107,6 @@ export default class AddDish extends React.Component {
               id="dish-name"
               value={this.state.name}
               onChange={this.handleDishChange}
-              required
             />
           </div>
           <div className="dish-price">
@@ -95,18 +117,14 @@ export default class AddDish extends React.Component {
               id="dish-price"
               value={this.state.price}
               onChange={this.handleDishChange}
-              required
             />
           </div>
           <div className="dish-select-button-div">
             <label htmlFor="tag">Tag: (up to 5) </label>
             {/* TODO WILL NEED TO RESTRICT TO MAX 5 */}
-            <DishCheckboxContainer />
+            <DishCheckboxContainer checkboxCallback={this.checkboxChecked} />
             <button type="submit" onSubmit={this.handleDishSubmit}>
               Add New Dish
-            </button>
-            <button type="submit" onSubmit={this.handleDishUpdate}>
-              Update Dish
             </button>
             {loading && (
               <div className="loading-screen">
@@ -114,6 +132,15 @@ export default class AddDish extends React.Component {
                 {/* TODO remember to change color  */}
               </div>
             )}
+          </div>
+          <div>
+            <button type="submit" onSubmit={this.handleDishUpdate}>
+              Update Dish
+            </button>
+
+            <button type="submit" onSubmit={this.handleDishDelete}>
+              Delete Dish
+            </button>
           </div>
         </form>
         {/* <button type="button" className="go-back" onClick={this.goBack}>
@@ -123,3 +150,8 @@ export default class AddDish extends React.Component {
     );
   }
 }
+
+export default withRouter(AddDish);
+
+//TODO I need to pull the list of the dishes from the id restaurant
+

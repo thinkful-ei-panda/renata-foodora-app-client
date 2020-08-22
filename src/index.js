@@ -5,8 +5,6 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { DishProvider } from './Context/DishListContext';
 import { RestContextProvider } from './Context/RestContext';
-//import { SearchCheckboxProvider } from './Context/SearchCheckboxContext.js';
-//import { DishCheckboxProvider } from './Context/CheckboxContext';
 
 ReactDOM.render(
   <BrowserRouter>

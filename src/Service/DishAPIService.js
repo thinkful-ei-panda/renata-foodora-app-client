@@ -15,22 +15,18 @@ const DishAPIService = {
     );
   },
 
-  postDish(dish) {
-    return fetch(`${BASE_URL}/dish`, {
+  async postDish(dish) {    
+    const res = await fetch(`${BASE_URL}/dish`, {
       method: "POST",
       headers: {
         'Authorization': `Bearer ${API_KEY}`,
         "content-type": "application/json",
       },
       body: JSON.stringify(dish),
-    }).then((res) =>
-      !res.ok
-        ? res
-            .json()
-            .then((event) => console.log("error?=" + JSON.stringify(event)))
-            .then((event) => Promise.reject(event))
+    })
+    return (!res.ok)
+        ? res.json().then((event) => Promise.reject(event))
         : res.json()
-    );
   },
 
   updateDish(dish, id) {
