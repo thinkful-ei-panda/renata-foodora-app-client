@@ -116,7 +116,6 @@ export default class Register extends React.Component {
             {loading && (
           <div className="loading-screen">
             <ScaleLoader size={35} color={"#067368"} loading={loading} />
-            {/* TODO remember to change color  */}
           </div>
         )}
           </form>

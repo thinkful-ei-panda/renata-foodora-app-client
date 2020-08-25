@@ -9,6 +9,19 @@ export default class Nav extends React.Component {
     return <div className="login">{`Welcome ${restName} Restaurant`}</div>;
   }
 
+  renderRestActions(){
+    return(
+      <div>
+        <Link to={'/restaurant-home/edit'}>
+          <button>Update</button>
+        </Link>
+        <Link to={'/restaurant-home/delete'}>
+          <button>Delete Account</button>
+        </Link>
+      </div>
+    );
+  }
+
   render() {
     return (
       <nav className="navbar">
@@ -37,9 +50,12 @@ export default class Nav extends React.Component {
             {({ loggedInRestaurantId, loggedInRestaurantName }) => {
               if (loggedInRestaurantId != null) {
                 return (
+                  <div>
                   <Link to={"/register"}>
                     {this.renderRestName(loggedInRestaurantName)}
                   </Link>
+                  {this.renderRestActions()}
+                  </div>
                 );
               } else {
                 return <div />;
