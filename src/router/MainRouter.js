@@ -1,12 +1,14 @@
 import React from "react";
-import { Switch, Route, useHistory } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import AddDish from "../AddDish/AddDish";
 import Search from '../Search/Search';
 import RestaurantLanding from '../RestaurantLanding/RestaurantLanding';
 import RestaurantEdit from "../RestaurantLanding/RestaurantEdit";
+import RestaurantDelete from "../RestaurantLanding/RestaurantDelete";
 
 export default function MainRouter() {
   return (
+    //ROUTES FOR RESTAURANT HOME, EDIT AND DELETE RESTAURANT INFO AND SEARCH DISH
     <div>
       <Switch>
         <Route exact path='/restaurant-home'>
@@ -14,10 +16,10 @@ export default function MainRouter() {
           <AddDish />
         </Route>
         <Route exact path='/restaurant-home/edit'>
-          <RestaurantEdit history={useHistory}/>
+          <RestaurantEdit />
         </Route>
         <Route exact path='/restaurant-home/delete'>
-          <h3>Confirmation delete</h3>
+          <RestaurantDelete />
         </Route>
         <Route exact path='/'>
           <Search />

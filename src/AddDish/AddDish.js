@@ -143,9 +143,6 @@ class AddDish extends React.Component {
             </button>
           </div>
         </form>
-        {/* <button type="button" className="go-back" onClick={this.goBack}>
-          Go Back
-        </button> */}
       </main>
     );
   }
@@ -153,5 +150,5 @@ class AddDish extends React.Component {
 
 export default withRouter(AddDish);
 
-//TODO I need to pull the list of the dishes from the id restaurant
+//TODO ADD COMMENTS
 

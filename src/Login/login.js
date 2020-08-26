@@ -54,8 +54,7 @@ export default class Login extends React.Component {
       return <Redirect to="/" />;
     }
     return (
-      <div>
-        <div id="login" className="tabContent">
+      <div id="login" className="tabContent">
           <h3>Restaurant Login</h3>
           <form className="login-form" onSubmit={this.handleRestSubmit}>
             <div role="alert">{error && <p className="error">{error}</p>}</div>
@@ -88,12 +87,10 @@ export default class Login extends React.Component {
             {loading && (
               <div className="loading-screen">
                 <ScaleLoader size={35} color={"#067368"} loading={loading} />
-                {/* TODO remember to change color  */}
               </div>
             )}
           </form>
         </div>
-      </div>
     );
   }
 }

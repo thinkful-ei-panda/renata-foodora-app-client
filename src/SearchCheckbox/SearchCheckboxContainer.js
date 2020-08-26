@@ -12,25 +12,26 @@ export default class SearchCheckboxContainer extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  //CHECKS IF CHECKBOX IS CHECKED OR NOT
   async handleChange(event) {
     const item = event.target.name;
-    console.log("SearchCheckboxContainer -> handleChange -> item", item) //name
     const isChecked = event.target.checked;
+    
     await this.setState((prevState) => ({
       checkedItems: prevState.checkedItems.set(item, isChecked),
     }));
-    //console.log("SearchCheckboxContainer -> handleChange -> checkedItems", this.state.checkedItems) //check or unchecked
-    //console.log("SearchCheckboxContainer -> constructor -> tags", this.state.tags) //tags ids 
+
     let itemID = this.state.tags.filter(tag => tag.tag === item)[0].id;
     this.props.checkboxCallback(itemID, isChecked);
   }
 
+  //SHOW ALL SEARCH TAGS FROM API
   async componentDidMount() {
     await SearchAPIService.getAllTags().then((tags) => {
       this.setState({ tags: tags });
     });
 
-    // initialize checkedItems map with "false" for all tags
+    
     this.state.tags.forEach((e) => {
       this.setState((prevState) => ({
         checkedItems: prevState.checkedItems.set(e.tag, false),
@@ -44,6 +45,7 @@ export default class SearchCheckboxContainer extends React.Component {
         {this.state.tags.map((tag) => (
           <label key={tag.id}>
             {tag.tag} ({tag.id})
+            {/* DISPLAYING SEARCH TAGS ON THE PAGE USING THE COMPONENT */}
             <SearchCheckbox
               name={tag.tag}
               checked={this.state.checkedItems.get(tag.tag)}

@@ -18,21 +18,16 @@ export default class FullLogin extends React.Component{
         };
       }
     
-      // debugStuff = () => {
-      //   console.log('-- dumping current state=' + JSON.stringify(this.state));
-      //   console.log('-- dumping current local storage=' + TokenService.debugStorage());
-      // }
-      // //TODO  DELETE LATER ON
-    
+      //MAKE LOGIN
       doLogin = (restId, restName) => {
         this.setState({
           loggedInRestaurantId: restId,
           loggedInRestaurantName: restName,
         }, 
-        //this.debugStuff
         );
       };
     
+      //MAKE LOGOUT
       doLogout = () => {
         TokenService.clearAuthToken();
         TokenService.clearRestId();
@@ -51,6 +46,7 @@ export default class FullLogin extends React.Component{
       }
       render() {
           return(
+            // INVOLVING CONTEXT AND ROUTES TO THE RESPECTIVE PATHS 
         <LoginContext.Provider value={this.state}>
           <nav>
             <div>

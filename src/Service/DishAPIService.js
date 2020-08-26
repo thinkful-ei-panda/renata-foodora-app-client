@@ -3,6 +3,7 @@ import BASE_URL from "../config";
 import { API_KEY } from "../config";
 
 const DishAPIService = {
+  //TODO NOT BEING USED!!!!!
   getDish(id) {
     return fetch(`${BASE_URL}/dish/${id}`, {
       headers: {
@@ -15,6 +16,7 @@ const DishAPIService = {
     );
   },
 
+  //USED TO POST A NEW DISH BY A LOGGED RESTAURANT - AddDish.js
   async postDish(dish) {    
     const res = await fetch(`${BASE_URL}/dish`, {
       method: "POST",
@@ -29,6 +31,7 @@ const DishAPIService = {
         : res.json()
   },
 
+  //TODO NOT BEING USED!!!!!!!!
   updateDish(dish, id) {
     return fetch(`${BASE_URL}/dish/${id}`, {
       method: "PATCH",
@@ -43,6 +46,7 @@ const DishAPIService = {
     );
   },
 
+  //REMOVES A DISH FROM A LIST OF RESTAURANT DISHES
   deleteDish(dish, id) {
     return fetch(`${BASE_URL}/dish/${id}`, {
       method: "DELETE",
@@ -57,6 +61,7 @@ const DishAPIService = {
     );
   },
 
+  //GETTING ALL TAGS FROM THE BACKEND TO DISPLAY - DishCheckboxContainer.js
   getAllTags() {
     return fetch(`${BASE_URL}/tag`, {
       method: "GET",

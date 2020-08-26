@@ -89,6 +89,7 @@ class Search extends React.Component {
     //console.log('THIS IS HERE!!!! SECOND CALLED!!!(search.js)');
   };
 
+  //TODO MAKE THE CLICK STOP AT 5 TAGS
   render() {
     return (
       <div>
@@ -206,3 +207,5 @@ class Search extends React.Component {
 }
 
 export default withRouter(Search);
+
+//TODO ADD COMMENTS

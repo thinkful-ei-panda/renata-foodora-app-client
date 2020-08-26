@@ -12,6 +12,7 @@ export default class DishCheckboxContainer extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+//CHECKS IF CHECKBOX IS CHECKED OR NOT
   async handleChange(event) {
     const item = event.target.name;
     const isChecked = event.target.checked;
@@ -23,12 +24,13 @@ export default class DishCheckboxContainer extends React.Component {
     this.props.checkboxCallback(itemID, isChecked);
   }
 
+  //SHOW ALL DISH TAGS FROM API
   async componentDidMount() {
     await DishAPIService.getAllTags().then((tags) => {
       this.setState({ tags: tags });
     });
 
-    // initialize checkedItems map with "false" for all tags
+    //INITIALIZE CHECKED ITEMS MAP WITH FALSE FOR ALL TAGS
     this.state.tags.forEach((e) => {
       this.setState((prevState) => ({
         checkedItems: prevState.checkedItems.set(e.tag, false),
@@ -42,6 +44,7 @@ export default class DishCheckboxContainer extends React.Component {
         {this.state.tags.map((tag) => (
           <label key={tag.id}>
             {tag.tag} {tag.id}
+            {/* DISPLAYING DISH TAGS ON THE PAGE USING THE COMPONENT */}
             <DishCheckbox
               name={tag.tag}
               checked={this.state.checkedItems.get(tag.tag)}

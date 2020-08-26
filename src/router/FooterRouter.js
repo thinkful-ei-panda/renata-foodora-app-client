@@ -7,6 +7,7 @@ import Footer from "../Components/Footer";
 
 export default function FooterRouter() {
   return (
+    //ROUTE TO ALL MY PAGE COMPONENTS
     <footer>
       <Switch>
         <Route exact path="/" component={Footer} />

@@ -16,6 +16,7 @@ export default class RestaurantLanding extends React.Component {
   this.delete = this.delete.bind(this);
 };
 
+//GETS THE LIST OF ALL DISHES FROM THE RESTAURANT LOGGED
  getListDishesRestaurant = (event) => {
       event.preventDefault();
   };
@@ -33,6 +34,7 @@ export default class RestaurantLanding extends React.Component {
     })
   }
 
+  //DELETE THAT CALLS API TO DELETE THE DISHES FROM RESTAURANT
   delete = (id) => {
     console.log('THIS CONSOLE LOG IS ON LANDING DELETE');
     RestaurantLandingAPIDishes
@@ -46,16 +48,27 @@ export default class RestaurantLanding extends React.Component {
   render(){
       return(
           <div>
+      {/* FIRST PART - (restaurant-home) - DISPLAY RESTAURANT INFO */}
+            <h3>Restaurant Information:</h3>
+            <p>Name:</p>
+            <p>Phone:</p>
+
+            <h5>================================================</h5>
+
+      {/* SECOND PART - (restaurant-home) - DISPLAY ALL DISHES FROM RESTAURANT LOGGED*/}
+
+            <h3>List of Dishes: </h3>
               <div style={{ color: "white" }}>
           {this.state.dishes.map((result) => (
             <label key={result.id}>
               <h4>
-                Dish: <em>{result.name}</em>
+                Name: <em>{result.name}</em>
               </h4>
 
               <h5>$ {result.price}</h5>
               <h5>#{result.tag_names}</h5>
 
+      {/* THIRD PART -  (restaurant-home) - CALLS THE COMPONENT TO ADD THE DELETE BUTTON- */}
               <RestaurantDishDelete 
               delete={this.delete}
               dish={result}/>

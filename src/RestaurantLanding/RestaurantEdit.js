@@ -2,9 +2,10 @@ import React from 'react';
 import TokenService from '../Service/TokenService';
 import RestaurantLandingAPIDishes from '../Service/RestaurantAPIDishes';
 import ScaleLoader from "react-spinners/ScaleLoader";
+import { withRouter } from 'react-router-dom';
 
 
-export default class RestaurantEdit extends React.Component{
+class RestaurantEdit extends React.Component{
     constructor(props){
         super(props);
 
@@ -18,13 +19,14 @@ export default class RestaurantEdit extends React.Component{
         this.updateRestInfo = this.updateRestInfo.bind(this);
     };
 
+    //CHANGE THE FIELD FORMS WITHOUT HAVING TO REWRITE EVERY TIME
     handleRegUpdate = (event) =>
     this.setState({
       [event.target.name]: event.target.value,
     });
 
-
-    updateRestInfo = (event) => {
+    //FUNCTION THAT TALKS TO THE API TO UPDATE THE RESTAURANT INFO (PHONE/NAME)
+    async updateRestInfo(event){
         event.preventDefault();
 
         const restaurant_id = TokenService.getRestID();
@@ -33,31 +35,29 @@ export default class RestaurantEdit extends React.Component{
             loading: true,
         });
         
-        RestaurantLandingAPIDishes
+        const myJson = await RestaurantLandingAPIDishes
         .updateRestaurant(restaurant_id, {
             name: this.state.name,
             phone: this.state.phone,
-        }).then(() => {
-        //console.log("RestaurantEdit -> updateRestInfo -> res", res.status)
-            
-            console.log('SOMETHING THAT WERE GONNA SEE');
-            this.setState({
-                loading: false,
-            })
-            this.props.history.push('/restaurant-home');
-            console.log('OKAY BABY WE ARE SEEING STUFF');
         })
-        .catch((res) => {
-            console.log("AKSDJHKASJDHAKSJDHt -> updateRestInfo -> res", res.status)
-            this.setState({ error: res.error, loading: null});
-        });
+        this.setState({
+            loading: false,
+        })
+
+        if(myJson.error !== undefined){
+            console.log("RestaurantEdit -> updateRestInfo -> json.error", myJson.error)
+            this.setState({ error: myJson.error});      
+        }
+        else{
+            this.props.history.push('/restaurant-home');
+        }
     };
-    //TODO redirect to the other page isn't working! Come back!!!!!
 
     render(){
         const { error, loading } = this.state;
         return(
             <div id='update' className='updateContent'>
+                {/* DISPLAY OF THE FORM WITH THE FIELDS TO BE UPDATED */}
                 <h3>Restaurant Update</h3>
                 <form className='update-form' onSubmit={this.updateRestInfo}>
                 <div role="alert">
@@ -66,7 +66,7 @@ export default class RestaurantEdit extends React.Component{
                 <div className='update'>
                     <label
                     htmlFor='update-form-name'
-                    >Restaurant Name:
+                    >Name:
                     </label>
                     <input
                         type="text"
@@ -79,7 +79,7 @@ export default class RestaurantEdit extends React.Component{
                 <div className='update'>
                     <label
                     htmlFor='update-form-phone'
-                    >Restaurant Phone:
+                    >Phone:
                     </label>
                     <input
                         type="text"
@@ -96,6 +96,7 @@ export default class RestaurantEdit extends React.Component{
                 Update
                 </button>
 
+                {/* UTILIZING A REACT SPINNER ON LOADING */}
                 {loading && (
                 <div className="loading-screen">
                     <ScaleLoader size={35} color={"#067368"} loading={loading} />
@@ -106,3 +107,5 @@ export default class RestaurantEdit extends React.Component{
         );
     }
 }
+
+export default withRouter(RestaurantEdit);

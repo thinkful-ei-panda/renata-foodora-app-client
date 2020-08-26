@@ -20,11 +20,15 @@ export default class Register extends React.Component {
 
   static contextType = RestContext;
 
+  //CHANGE THE FIELD FORMS WITHOUT HAVING TO REWRITE EVERY TIME
   handleRegChange = (event) =>
     this.setState({
       [event.target.name]: event.target.value,
     });
 
+  //FUNCTION THAT TALKS TO THE API TO SUBMIT THE RESTAURANT INFO
+  //USERNAME, PASSWORD, NAME AND PHONE
+  //THIS FUNCTION TALKS TO THE API, AUTHENTICATION AND CONTEXT
   handleRegSubmit = (event) => {
     event.preventDefault();
 
@@ -62,10 +66,13 @@ export default class Register extends React.Component {
     return (
       <div>
         <div id="register" className="tabContent">
+          {/* DISPLAY OF THE FORM WITH THE FIELDS TO BE REGISTERED */}
           <h3>Restaurant Register</h3>
           <form className="register-form" onSubmit={this.handleRegSubmit}>
             <div role="alert">
+              {/* ERROR SHOWING ON SCREEN */}
               {error && <p className="error">{error}</p>}
+              {/* TODO FIX REGISTERED! NOT SHOWING */}
               {registered && (
                 <p className="registered-alert">Restaurant account created!</p>
               )}
@@ -113,6 +120,8 @@ export default class Register extends React.Component {
             <button type="submit" onSubmit={this.handleRegSubmit}>
               Register
             </button>
+
+            {/* UTILIZING A REACT SPINNER ON LOADING */}
             {loading && (
           <div className="loading-screen">
             <ScaleLoader size={35} color={"#067368"} loading={loading} />

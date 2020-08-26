@@ -2,10 +2,9 @@ import BASE_URL from "../config";
 import { API_KEY } from "../config";
 
 const SearchAPIService = {
-  getSearchResult(anObj) {
-    console.log("getSearchResult -> anObj", JSON.stringify(anObj))
-    console.log('THIS IS A CALL FROM SEARCHAPISERVICE ' + JSON.stringify(anObj));
 
+  //API THAT GETS THE NAME, PRICE AND TAG FROM USER TO SEARCH - Search.js
+  getSearchResult(anObj) {
     return fetch(`${BASE_URL}/dishSearchResults?price=${anObj.price}&name=${anObj.name}&tag=[${anObj.tag}]`, {
       method: "GET",
       headers: {
@@ -18,6 +17,7 @@ const SearchAPIService = {
     );
   },
 
+  //API THAT DISPLAY ALL THE TAGS ON SCREEN - SearchCheckboxContainer.js
   getAllTags() {
     return fetch(`${BASE_URL}/tag`, {
       method: "GET",
