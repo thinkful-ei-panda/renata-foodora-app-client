@@ -3,7 +3,7 @@ import { API_KEY } from "../config";
 
 const SearchAPIService = {
 
-  //API THAT GETS THE NAME, PRICE AND TAG FROM USER TO SEARCH - Search.js
+  //API THAT GETS THE NAME, PRICE AND TAG OR ALL DISHES TO SEARCH - Search.js
   getSearchResult(anObj) {
     return fetch(`${BASE_URL}/dishSearchResults?price=${anObj.price}&name=${anObj.name}&tag=[${anObj.tag}]`, {
       method: "GET",

@@ -1,14 +1,34 @@
-# Foodora
+# Foodora - An app for dietary restrictions. 
 
-[Live]:()
+## Links:
+
+* Heroku: [Here]
+* BASE_URL: https://[herokuURL]/api/ ???????
+* BackEnd: [Github - Foodora]()
+* Live: [Foodora]()
+* Gist: [Gist]()
 
 ## Summary:
+What's the app? What does it fix? As a user...? 
 
-### Search for dishes:
+## Screenshots:
 
-### Restaurant Login:
+![Landing Page]()
+![Something]()
+![Something]()
 
-## API Link:
-[Link]:()
+## Technologies used:
+* React
+* React Router
+* Node.js
+* Express
+* Server: Heroku???
+* Deployment: Vercel//Netlify????
+* Chai
+* Nodemon
+* Supertest
+* Mocha
+* Enzyme
 
-## Server side on GitHUb:
+## Contact:
+LinkedIn: 
