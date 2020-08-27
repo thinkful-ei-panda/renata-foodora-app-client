@@ -123,24 +123,16 @@ class AddDish extends React.Component {
             <label htmlFor="tag">Tag: (up to 5) </label>
             {/* TODO WILL NEED TO RESTRICT TO MAX 5 */}
             <DishCheckboxContainer checkboxCallback={this.checkboxChecked} />
+          </div>
+          <div>
             <button type="submit" onSubmit={this.handleDishSubmit}>
               Add New Dish
             </button>
             {loading && (
               <div className="loading-screen">
-                <ScaleLoader size={35} color={"#067368"} loading={loading} />
-                {/* TODO remember to change color  */}
+                <ScaleLoader size={35} color={"#FFD700"} loading={loading} />
               </div>
             )}
-          </div>
-          <div>
-            <button type="submit" onSubmit={this.handleDishUpdate}>
-              Update Dish
-            </button>
-
-            <button type="submit" onSubmit={this.handleDishDelete}>
-              Delete Dish
-            </button>
           </div>
         </form>
       </main>
@@ -149,6 +141,4 @@ class AddDish extends React.Component {
 }
 
 export default withRouter(AddDish);
-
-//TODO ADD COMMENTS
 

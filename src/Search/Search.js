@@ -175,11 +175,13 @@ class Search extends React.Component {
             value={this.state.name}
             onChange={this.handleSearchChange}
           />
+        </form>
+        <div>
           {/* SUBMIT BUTTON  */}
           <button type="submit" onSubmit={this.handleSearchSubmit}>
             Search
           </button>
-        </form>
+        </div>
         <div style={{ color: "white" }}>
           {this.state.searchResults.map((result) => (
             <label key={result.id}>
@@ -207,5 +209,3 @@ class Search extends React.Component {
 }
 
 export default withRouter(Search);
-
-//TODO ADD COMMENTS

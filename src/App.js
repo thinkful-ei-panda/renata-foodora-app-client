@@ -6,6 +6,7 @@ import "./App.css";
 import MainRouter from "./Router/MainRouter";
 import Error from './Error';
 import FullLogin from "./Login/FullLogin";
+import logo from './Images/foodora-logo.png';
 
 class App extends React.Component {
 
@@ -16,7 +17,7 @@ class App extends React.Component {
         <Error>
         <header>
           <h1>
-            <Link style={{ color: 'white' }} to="/">Foodora</Link> 
+            <Link to="/"><img src={logo} alt="Foodora Logo"/></Link> 
           </h1>
           <h2>An app for dietary restrictions</h2>
         </header>

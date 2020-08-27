@@ -1,11 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 .App {
   text-align: center;
   margin: 20px;
   padding: 20px;
+  /* background-color: rgb(174,32,39); */
+  /* background-color: #FFFACD; */
   background-color: #222629;
-  color: #61dafb;
-  font-family: 'Playfair Display', serif;
+  /* color: #61dafb; */
+  color: #ffd700;
+  font-family: 'Montserrat', sans-serif;
   font-size: 20px;
+  /* #ae2027 */
 }
 
 h1{
@@ -15,8 +20,14 @@ h1{
 
 h2{
   font-size: 20px;
-  color: #57ba98;
+  color: #ffd700;
+  /* color: #57ba98; */
   font-style: italic;
+}
+
+img {
+  width: 350px;
+  height: 250px;
 }
 
 nav{
@@ -33,7 +44,8 @@ main{
 
 .footer-router{ 
   margin: 10px;
-  color: white;
+  color: #ffd700;
+  /* color: white; */
 }
 
 .copyright{

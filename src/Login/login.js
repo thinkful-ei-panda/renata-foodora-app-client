@@ -86,7 +86,7 @@ export default class Login extends React.Component {
             </button>
             {loading && (
               <div className="loading-screen">
-                <ScaleLoader size={35} color={"#067368"} loading={loading} />
+                <ScaleLoader size={35} color={"#FFD700"} loading={loading} />
               </div>
             )}
           </form>
