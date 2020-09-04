@@ -4,7 +4,6 @@ import AddDish from "../AddDish/AddDish";
 import Search from '../Search/Search';
 import RestaurantLanding from '../RestaurantLanding/RestaurantLanding';
 import RestaurantEdit from "../RestaurantLanding/RestaurantEdit";
-import RestaurantDelete from "../RestaurantLanding/RestaurantDelete";
 
 export default function MainRouter() {
   return (
@@ -17,9 +16,6 @@ export default function MainRouter() {
         </Route>
         <Route exact path='/restaurant-home/edit'>
           <RestaurantEdit />
-        </Route>
-        <Route exact path='/restaurant-home/delete'>
-          <RestaurantDelete />
         </Route>
         <Route exact path='/'>
           <Search />

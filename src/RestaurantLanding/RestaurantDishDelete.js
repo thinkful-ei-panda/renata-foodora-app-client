@@ -14,7 +14,7 @@ export default class RestaurantDishDelete extends React.Component{
     render(){
         return(
             <div>
-                <button 
+                <button className="button"
                 onClick={this.handleDelete}
                 >
                 Delete

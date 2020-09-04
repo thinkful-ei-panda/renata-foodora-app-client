@@ -32,7 +32,6 @@ const RestaurantLandingAPIDishes = {
 
   // TO UPDATE RESTAURANT PROFILE - RestaurantEdit.js
   async updateRestaurant(restaurant_id, rest) {
-    console.log("updateRestaurant -> rest", JSON.stringify(rest))
     const res = await  fetch(`${BASE_URL}/restaurant/${restaurant_id}`, {
       method: 'PATCH',
       headers: {
@@ -41,7 +40,6 @@ const RestaurantLandingAPIDishes = {
       },
       body: JSON.stringify(rest),
     }) 
-    console.log("res", res)
     if(res.status === 204){
       return {}
     }
@@ -51,21 +49,6 @@ const RestaurantLandingAPIDishes = {
     }
   },
 
-  //DELETE RESTAURANT PROFILE - RestaurantDelete.js
-  deleteRestaurant(rest) {
-    return fetch(`${BASE_URL}/restaurant/:id`, {
-      method: "DELETE",
-      headers: {
-        'Authorization': `Bearer ${API_KEY}`,
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(rest),
-    }).then(res =>
-      (!res.ok) 
-      ? res.json().then((event) => Promise.reject(event)) 
-      : res.json()
-    );
-  },
 };
 
 export default RestaurantLandingAPIDishes;

@@ -1,6 +1,7 @@
 import React from "react";
 import DishCheckbox from '../DishCheckbox/DishCheckbox';
 import DishAPIService from "../Service/DishAPIService";
+import './DishCheckbox.css';
 
 export default class DishCheckboxContainer extends React.Component {
   constructor(props) {
@@ -42,8 +43,8 @@ export default class DishCheckboxContainer extends React.Component {
     return (
       <React.Fragment>
         {this.state.tags.map((tag) => (
-          <label key={tag.id}>
-            {tag.tag} {tag.id}
+          <label key={tag.id} className="dish-tag-list chk-container">
+            {tag.tag}
             {/* DISPLAYING DISH TAGS ON THE PAGE USING THE COMPONENT */}
             <DishCheckbox
               name={tag.tag}

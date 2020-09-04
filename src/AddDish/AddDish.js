@@ -5,6 +5,7 @@ import DishCheckboxContainer from '../DishCheckbox/DishCheckboxContainer';
 import ScaleLoader from "react-spinners/ScaleLoader";
 import DishContext from "../Context/DishListContext";
 import { withRouter } from 'react-router-dom';
+import './AddDish.css';
 
 class AddDish extends React.Component {
   state = {
@@ -19,24 +20,13 @@ class AddDish extends React.Component {
   static contextType = DishContext;
 
   checkboxChecked = (itemID, itemChecked) => {
-    console.log("Search -> checkboxChecked -> 1) itemID", itemID);
-    console.log("Search -> checkboxChecked -> 2) itemChecked", itemChecked);
     let tempArray = this.state.tag_id;
-
-    console.log(
-      "Search -> checkboxChecked -> tempArray BEFORE IF",
-      JSON.stringify(tempArray)
-    );
 
     if (itemChecked) {
       tempArray.push(itemID);
     } else {
       tempArray = tempArray.filter((tagID) => tagID !== itemID);
     }
-    console.log(
-      "Search -> checkboxChecked -> tempArray AFTER IF",
-      JSON.stringify(tempArray)
-    );
 
     this.setState({
       tag_id: tempArray,
@@ -81,11 +71,6 @@ class AddDish extends React.Component {
     });
   };
 
-  // goBack = () => {
-  //   this.context.setDishAddFalse();
-  //   this.props.history.goBack();
-  // };
-
   render() {
     const { error, loading } = this.state;
     return (
@@ -96,7 +81,7 @@ class AddDish extends React.Component {
           onSubmit={this.handleDishSubmit}
         >
           <div>
-            <h3>Add a dish:</h3>
+            <h3 className='color'>Add a dish:</h3>
           </div>
           <div role="alert">{error && <p className="error">{error}</p>}</div>
           <div className="dish-name">
@@ -119,18 +104,19 @@ class AddDish extends React.Component {
               onChange={this.handleDishChange}
             />
           </div>
-          <div className="dish-select-button-div">
-            <label htmlFor="tag">Tag: (up to 5) </label>
-            {/* TODO WILL NEED TO RESTRICT TO MAX 5 */}
-            <DishCheckboxContainer checkboxCallback={this.checkboxChecked} />
+          <div className='search-container'>
+            <p className='color'>Tag: (up to 5)</p>
+            <div className='search-chkbox color-white'>
+                <DishCheckboxContainer checkboxCallback={this.checkboxChecked} />
+            </div>
           </div>
           <div>
-            <button type="submit" onSubmit={this.handleDishSubmit}>
+            <button className="button" onSubmit={this.handleDishSubmit}>
               Add New Dish
             </button>
             {loading && (
               <div className="loading-screen">
-                <ScaleLoader size={35} color={"#FFD700"} loading={loading} />
+                <ScaleLoader size={35} color={"#f52c15"} loading={loading} />
               </div>
             )}
           </div>

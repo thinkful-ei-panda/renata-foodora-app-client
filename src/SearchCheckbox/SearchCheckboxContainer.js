@@ -1,6 +1,7 @@
 import React from "react";
 import SearchCheckbox from "../SearchCheckbox/SearchCheckbox";
 import SearchAPIService from "../Service/SearchAPIService";
+import './SearchCheckbox.css';
 
 export default class SearchCheckboxContainer extends React.Component {
   constructor(props) {
@@ -43,8 +44,8 @@ export default class SearchCheckboxContainer extends React.Component {
     return (
       <React.Fragment>
         {this.state.tags.map((tag) => (
-          <label key={tag.id}>
-            {tag.tag} ({tag.id})
+          <label key={tag.id} className="search-tag-list chk-container">
+            {tag.tag}
             {/* DISPLAYING SEARCH TAGS ON THE PAGE USING THE COMPONENT */}
             <SearchCheckbox
               name={tag.tag}

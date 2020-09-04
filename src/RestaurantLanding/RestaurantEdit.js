@@ -45,7 +45,6 @@ class RestaurantEdit extends React.Component{
         })
 
         if(myJson.error !== undefined){
-            console.log("RestaurantEdit -> updateRestInfo -> json.error", myJson.error)
             this.setState({ error: myJson.error});      
         }
         else{
@@ -58,12 +57,12 @@ class RestaurantEdit extends React.Component{
         return(
             <div id='update' className='updateContent'>
                 {/* DISPLAY OF THE FORM WITH THE FIELDS TO BE UPDATED */}
-                <h3>Restaurant Update</h3>
+                <h3 className='color'>Restaurant Update</h3>
                 <form className='update-form' onSubmit={this.updateRestInfo}>
                 <div role="alert">
                     {error && <p className="error">{error}</p>}
                 </div> 
-                <div className='update'>
+                <div className='restname'>
                     <label
                     htmlFor='update-form-name'
                     >Name:
@@ -76,7 +75,7 @@ class RestaurantEdit extends React.Component{
                         onChange={this.handleRegUpdate}
                     ></input>
                 </div>
-                <div className='update'>
+                <div className='phone'>
                     <label
                     htmlFor='update-form-phone'
                     >Phone:
@@ -90,7 +89,7 @@ class RestaurantEdit extends React.Component{
                     ></input>
                 </div>
                 <button 
-                type="submit" 
+                className='button'
                 onSubmit={this.updateRestInfo}
                 >
                 Update
@@ -99,7 +98,7 @@ class RestaurantEdit extends React.Component{
                 {/* UTILIZING A REACT SPINNER ON LOADING */}
                 {loading && (
                 <div className="loading-screen">
-                    <ScaleLoader size={35} color={"#FFD700"} loading={loading} />
+                    <ScaleLoader size={35} color={"#f52c15"} loading={loading} />
                 </div>
                 )}
                 </form>

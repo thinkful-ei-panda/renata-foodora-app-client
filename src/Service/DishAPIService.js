@@ -18,22 +18,6 @@ const DishAPIService = {
         : res.json()
   },
 
-  //REMOVES A DISH FROM A LIST OF RESTAURANT DISHES
-  //TODO put where this code is being used
-  deleteDish(dish, id) {
-    return fetch(`${BASE_URL}/dish/${id}`, {
-      method: "DELETE",
-      headers: {
-        'Authorization': `Bearer ${API_KEY}`,
-        "content-type": "application/json",
-        //authorization: `bearer ${TokenService.getAuthToken()}`,
-      },
-      body: JSON.stringify(dish),
-    }).then((res) =>
-      !res.ok ? res.json().then((event) => Promise.reject(event)) : res.json()
-    );
-  },
-
   //GETTING ALL TAGS FROM THE BACKEND TO DISPLAY - DishCheckboxContainer.js
   getAllTags() {
     return fetch(`${BASE_URL}/tag`, {

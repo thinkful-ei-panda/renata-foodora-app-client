@@ -7,19 +7,15 @@ export default class Nav extends React.Component {
 
 //RENDERS ON THE FIRST PAGE THE NAME OF THE RESTAURANT ONCE IT'S LOGGED IN. CLICKABLE TO SEE IT'S INFO
   renderRestName(restName) {
-    return <div className="login">{`Welcome, '${restName}'!`}</div>;
+    return <div>{`Welcome, '${restName}'!`}</div>;
   }
 
 //RESTAURANT ACTIONS THAT WILL BE MOVE
-//TODO MOVE THIS OUT OF HERE
   renderRestActions(){
     return(
       <div>
         <Link to={'/restaurant-home/edit'}>
-          <button>Update</button>
-        </Link>
-        <Link to={'/restaurant-home/delete'}>
-          <button>Delete Account</button>
+          <button className="button">Update</button>
         </Link>
       </div>
     );
@@ -27,22 +23,22 @@ export default class Nav extends React.Component {
 
   render() {
     return (
-      <nav className="navbar">
-        <div className="header-box">
+      <nav>
+        <div className="welcome">
     {/* INVOLVING CONTEXT AROUND THE LOGGING LINKS */}
           <LoginContext.Consumer>
             {({ loggedInRestaurantId, loggedInRestaurantName, logout }) => {
               if (loggedInRestaurantId == null) {
                 // ACTUAL LINKS/PATH LOGIN AND LOGOUT
                 return (
-                  <Link to={"/login"}>
-                    <div className="login">Login</div>
+                  <Link className="welcome" to={"/login"}>
+                    <div>Login</div>
                   </Link>
                 );
               } else {
                 return (
-                  <Link onClick={logout} to={"/"}>
-                    <div className='login'>Logout</div>
+                  <Link className="welcome" onClick={logout} to={"/"}>
+                    <div>Logout</div>
                   </Link>
                 );
               }
@@ -50,18 +46,31 @@ export default class Nav extends React.Component {
           </LoginContext.Consumer>
 
           {/* LINK/PATH TO REGISTER A NEW RESTAURANT */}
-          <Link to={"/register"}>
-            <div className="login">Restaurant Register</div>
-          </Link>
+          <LoginContext.Consumer>
+          {({ loggedInRestaurantId }) => {
+              if (loggedInRestaurantId == null) {
+                // ACTUAL LINKS/PATH RATHER IT WILL SHOW REGISTER OR NOT
+                return (
+                <Link className="welcome" to={"/register"}>
+                  <div>Restaurant Register</div>
+                </Link>
+                );
+              } else {
+                return (
+                  <div></div>
+                );
+              }
+            }}
+          </LoginContext.Consumer>
+
 
           {/* CHECK IF RESTAURANT IS LOGGED IN, IN ORDER TO SHOW THE WELCOME MESSAGE */}
-          {/* TODO DELETE RENDERRESTACTIONS */}
           <LoginContext.Consumer>
             {({ loggedInRestaurantId, loggedInRestaurantName }) => {
               if (loggedInRestaurantId != null) {
                 return (
                   <div>
-                  <Link to={"/restaurant-home"}>
+                  <Link className="welcome" to={"/restaurant-home"}>
                     {this.renderRestName(loggedInRestaurantName)}
                   </Link>
                   {this.renderRestActions()}

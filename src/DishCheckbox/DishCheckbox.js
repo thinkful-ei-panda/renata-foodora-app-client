@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import './DishCheckbox.css';
 
 //SKELETON OF DISH CHECKBOXES 
 const DishCheckbox = ({ name, checked = false, onChange }) => (
-  <input type="checkbox" name={name} checked={checked} onChange={onChange} className="dish-tag-list" />
+  <input type="checkbox" name={name} checked={checked} onChange={onChange} className='chk-box' />
 );
 
 DishCheckbox.propTypes = {

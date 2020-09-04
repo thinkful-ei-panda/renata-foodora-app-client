@@ -79,14 +79,14 @@ export default class Login extends React.Component {
               ></input>
             </div>
             <button 
-            type="submit" 
+            className='button' 
             onSubmit={this.handleRestSubmit}
             >
               Login
             </button>
             {loading && (
               <div className="loading-screen">
-                <ScaleLoader size={35} color={"#FFD700"} loading={loading} />
+                <ScaleLoader size={35} color={"#f52c15"} loading={loading} />
               </div>
             )}
           </form>

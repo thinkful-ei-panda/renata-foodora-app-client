@@ -62,20 +62,15 @@ export default class Register extends React.Component {
 
   render() {
     const { error, loading } = this.state;
-    const { registered } = this.context;
     return (
       <div>
-        <div id="register" className="tabContent">
+        <div id="register">
           {/* DISPLAY OF THE FORM WITH THE FIELDS TO BE REGISTERED */}
           <h3>Restaurant Register</h3>
           <form className="register-form" onSubmit={this.handleRegSubmit}>
             <div role="alert">
               {/* ERROR SHOWING ON SCREEN */}
               {error && <p className="error">{error}</p>}
-              {/* TODO FIX REGISTERED! NOT SHOWING */}
-              {registered && (
-                <p className="registered-alert">Restaurant account created!</p>
-              )}
             </div>
             <div className="username">
               <label htmlFor="register-form-username">Username:</label>
@@ -98,7 +93,7 @@ export default class Register extends React.Component {
               ></input>
             </div>
             <div className="restname">
-              <label htmlFor="register-form-restname">Restaurant Name:</label>
+              <label htmlFor="register-form-restname">Name:</label>
               <input
                 type="text"
                 name="name"
@@ -117,14 +112,14 @@ export default class Register extends React.Component {
                 onChange={this.handleRegChange}
               ></input>
             </div>
-            <button type="submit" onSubmit={this.handleRegSubmit}>
+            <button className="button" onSubmit={this.handleRegSubmit}>
               Register
             </button>
 
             {/* UTILIZING A REACT SPINNER ON LOADING */}
             {loading && (
           <div className="loading-screen">
-            <ScaleLoader size={35} color={"#FFD700"} loading={loading} />
+            <ScaleLoader size={35} color={"#f52c15"} loading={loading} />
           </div>
         )}
           </form>

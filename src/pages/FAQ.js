@@ -2,7 +2,7 @@ import React from "react";
 
 export default function FAQ() {
   return (
-    <section>
+    <section className='faq'>
       <div>
         <h1>Frequent Asked Questions:</h1>
         <h2> 1 - Do I need to create an account to make a search?</h2>
@@ -19,14 +19,11 @@ export default function FAQ() {
         </p>
         <h2> 4 - As a restaurant, how can I update my account?</h2>
         <p>
-          "Log into you account then click on the 'Welcome' message. That will take you to your own page with all your information. On that page, click on 'Update'. You will be able to update your name and/or phone number."
+          "Log into your account then click on the 'Welcome' message. That will take you to your own page with all your information. On that page, click on 'Update'. You will be able to update your name and/or phone number."
         </p>
-        <h2> 5 - As a restaurant, is it possible to delete my account?</h2>
+        <h2> 5 - I am a user, and I would like to save my dishes in a favorite list. How can I do it?</h2>
         <p>
-          "Yes. All you have to do is while you are logged in, click on the 'Welcome' message up the top. That link will redirect your own page. There, click on Delete account. This will take you to a confirmation page. 
-        </p>
-        <p> 
-          Just remember that if you decide to delete you account, you <u>WILL NOT</u> be able to reversed it and all your information and dish list will de deleted."
+          "The 'User Login' part of <i>Foodora</i> is coming very soon, in there you will be able to save your favorite dishes and also leave reviews of all dishes you have tried. Stay tunned!"
         </p>
       </div>
     </section>

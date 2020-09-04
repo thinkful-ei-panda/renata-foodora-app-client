@@ -1,0 +1,70 @@
+.search-container{
+   padding: 10px;
+}
+
+.search-title{
+   text-align: center;
+   color: #000;
+}
+
+
+.last-search-title{
+    font-style: oblique;
+    font-weight: bold;
+    visibility: hidden;
+}
+
+.search-chkbox{
+    /* border: 1px solid #FFFFFF; */
+    /* background-color: #f5f9e4; */
+    background:rgba(1,1,1,0.7);
+}
+
+.search-range-price-form{
+    margin: 10px;
+    padding: 20px;
+    /* background-color: #f5f9e4; */
+    background:rgba(1,1,1,0.7);
+}
+
+legend {
+    display:none;
+}
+
+.search-results{
+    color:#FFFFFF;
+    border: 1px solid #000;
+    margin: 10px;
+    /* background-color: #f5f9e4; */
+    background:rgba(1,1,1,0.7);
+    padding: 20px;
+}
+
+.tag-names{
+    display: inline-flex;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.rest-name{
+    margin:5px;
+}
+
+.error-tags{
+    color: #f83c02;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+/* +++++++++++++++ MEDIUM & BIG MEDIAS +++++++++++++++++++ */
+@media all and (min-width: 600px) {
+.search-chkbox, .search-results{
+    margin: 0 5vw 0 5vw;
+}
+
+.search-range-price-form{
+    margin: 0 5vw 0 5vw;
+}
+
+}

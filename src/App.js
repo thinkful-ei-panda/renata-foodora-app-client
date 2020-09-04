@@ -6,44 +6,50 @@ import "./App.css";
 import MainRouter from "./Router/MainRouter";
 import Error from './Error';
 import FullLogin from "./Login/FullLogin";
-import logo from './Images/foodora-logo.png';
+import logo600 from './Images/foodora-logo600.png';
 
 class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        {/* Header */}
-        <Error>
-        <header>
-          <h1>
-            <Link to="/"><img src={logo} alt="Foodora Logo"/></Link> 
-          </h1>
-          <h2>An app for dietary restrictions</h2>
-        </header>
-        </Error>
+      <div className='div-container'>
+        <div className="div-main-container">
+          <div className='logo-login'>
+          {/* Header */}
+            <Error>
+              <div className='logo'>
+                <header>
+                  <h1>
+                    <Link to="/"><img srcSet={`${logo600} 1400w`} alt="Foodora Logo"/></Link> 
+                  </h1>
+                </header>
+              </div>
+            </Error>
 
-        {/* Nav */}
-        <Error>
-        <nav>
-            <FullLogin />
-        </nav>
-        </Error>
+              {/* Nav */}
+            <Error>
+              <div className='login-app'>
+                <nav>
+                  <FullLogin />
+                </nav>
+              </div>
+            </Error>
+          </div>
+          {/* Main */}
+            <Error>
+              <main>
+                  <MainRouter />
+              </main>
+            </Error>
 
-        {/* Main */}
-        <Error>
-        <main>
-            <MainRouter />
-        </main>
-        </Error>
-
-        {/* Footer */}
-        <Error>
-        <footer>
-              <FooterRouter />
-              <Copyright />
-        </footer>
-        </Error>
+          {/* Footer */}
+            <Error>
+              <footer>
+                  <FooterRouter />
+                  <Copyright />
+              </footer>
+            </Error>
+        </div>
       </div>
     );
   }

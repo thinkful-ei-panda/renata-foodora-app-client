@@ -2,13 +2,13 @@ import React from "react";
 
 export default function About() {
   return (
-    <section>
+    <section className='about'>
       <div>
         <p>
           We know how is hard to find healthy options when you are not cooking
           yourself. Even rarer to find a full dedicated restaurant that will
-          have most dietary restrictions. Allow me to introduce you Foodora.
-          Foodora was created to make your life easier since we are the ones
+          have most dietary restrictions. Allow me to introduce you <i>Foodora</i>.
+          It was created to make your life easier since we are the ones
           looking for healthy dishes for you. That way, you can spend your day
           not stressing if you have to go out with friends, debating if you
           should or should not accept their invite because they are choosing a
@@ -18,7 +18,7 @@ export default function About() {
         <p>
           Our app includes several dietary restriction that goes from peanut
           allergy, keto, low carb, sugar free, vegan and so much more! No matter
-          your reason, if it is from allergy or diet, we have the dishes ready
+          your goal, if it is from allergy or diet, we have the dishes ready
           for you to savor!{" "}
         </p>
       </div>

@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import './SearchCheckbox.css';
 
 //SKELETON OF SEARCH CHECKBOXES
 const SearchCheckbox = ({ name, checked = false, onChange }) => (
-  <input type="checkbox" name={name} checked={checked} onChange={onChange} className="search-tag-list"/>
+  <input type="checkbox" name={name} checked={checked} onChange={onChange} className='chk-box'/>
 );
 
 SearchCheckbox.propTypes = {
