@@ -17,8 +17,10 @@
 .dishes-results{
     border: 1px solid #000;
     margin: 10px;
-    background:rgba(1,1,1,0.7);
+    /* background:rgba(1,1,1,0.7); */
+    background-color: #ae2027;
     padding: 20px;
+    border-radius: 10px;
 }
 
 .dish_main{

@@ -91,7 +91,8 @@ class Search extends React.Component {
         <form id="search" onSubmit={this.handleSearchSubmit}>
             <fieldset>
                 <legend />
-
+              <div className='radio-button'> 
+                <div className='radio-button-ch'>
                 <input
                   type="radio"
                   id="0"
@@ -101,7 +102,9 @@ class Search extends React.Component {
                   onChange={this.handleSearchChange}
                 />
                 <label htmlFor="0"> Any price</label>
+                </div>
 
+                <div className='radio-button-ch'>
                 <input
                   type="radio"
                   id="1"
@@ -111,7 +114,9 @@ class Search extends React.Component {
                   onChange={this.handleSearchChange}
                 />
                 <label htmlFor="1"> $1 - $10</label>
+                </div>
 
+                <div className='radio-button-ch'>
                 <input
                   type="radio"
                   id="2"
@@ -121,7 +126,9 @@ class Search extends React.Component {
                   onChange={this.handleSearchChange}
                 />
                 <label htmlFor="2"> $11 - $40</label>
+                </div>
 
+                <div className='radio-button-ch'>
                 <input
                   type="radio"
                   id="3"
@@ -131,7 +138,9 @@ class Search extends React.Component {
                   onChange={this.handleSearchChange}
                 />
                 <label htmlFor="3"> $41 - $60</label>
+                </div>
 
+                <div className='radio-button-ch'>
                 <input
                   type="radio"
                   id="4"
@@ -141,7 +150,9 @@ class Search extends React.Component {
                   onChange={this.handleSearchChange}
                 />
                 <label htmlFor="4"> $61 - $80</label>
+                </div>
 
+                <div className='radio-button-ch'>
                 <input
                   type="radio"
                   id="5"
@@ -151,6 +162,8 @@ class Search extends React.Component {
                   onChange={this.handleSearchChange}
                 />
                 <label htmlFor="5"> $81 or above</label>
+                </div>
+                </div>
             </fieldset>
           </form>
           </div>
@@ -170,27 +183,29 @@ class Search extends React.Component {
         </form>
         <div className="search-results">
           {this.state.searchResults.map((result) => (
+            <div className='indiv-dish'>
             <label key={result.id}>
-              <h4>
-                Dish: <em>{result.name}</em>
+              <h4 className='dish-title'>
+                <em>Name:</em> {result.name}
               </h4>
 
-              {result.name.errorMessage && (
-                <h3 className="error"> {this.state.errorMessage} </h3>
-              )}
-
               <h5 className="rest-name">
-                Restaurant: {result.restaurantname} | {result.phone}
+                <em>Restaurant:</em> {result.restaurantname} 
+              </h5>
+
+              <h5>
+                <em>Phone:</em> {result.phone}
               </h5>
 
               <h5>$ {result.price}</h5>
+
               <h5>
                 {result.tag_names.map((e) => {
                   return <div key={e} className="tag-names">#{e}</div>
                 })}
               </h5>
-              <hr />
             </label>
+            </div>
           ))}
         </div>
       </div>

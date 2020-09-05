@@ -17,14 +17,25 @@
 .search-chkbox{
     /* border: 1px solid #FFFFFF; */
     /* background-color: #f5f9e4; */
-    background:rgba(1,1,1,0.7);
+    /* background:rgba(1,1,1,0.7); */
+    background-color: #ae2027;
+    border-radius: 10px;
 }
 
 .search-range-price-form{
     margin: 10px;
     padding: 20px;
-    /* background-color: #f5f9e4; */
-    background:rgba(1,1,1,0.7);
+    border-radius: 10px;
+    background-color: #ae2027;
+}
+
+.radio-button{
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-button-ch{
+    margin: 5px;
 }
 
 legend {
@@ -33,17 +44,30 @@ legend {
 
 .search-results{
     color:#FFFFFF;
-    border: 1px solid #000;
     margin: 10px;
     /* background-color: #f5f9e4; */
-    background:rgba(1,1,1,0.7);
+    /* background:rgba(1,1,1,0.7); */
+    background-color: #ae2027;
     padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.indiv-dish{
+    border-radius: 10px;
+    margin: 5px;
+    padding: 5px;
+    color: #000;
+    background-color: #fff1f1;
+    border: 5px solid #a2191f;
 }
 
 .tag-names{
     display: inline-flex;
-    margin-right: 10px;
-    margin-left: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 3px;
 }
 
 .rest-name{
@@ -56,15 +80,37 @@ legend {
     font-weight: bold;
 }
 
+.dish-title{
+    font-weight: bold;
+}
+
 
 /* +++++++++++++++ MEDIUM & BIG MEDIAS +++++++++++++++++++ */
-@media all and (min-width: 600px) {
-.search-chkbox, .search-results{
+@media all and (min-width: 800px) {
+.search-chkbox{
     margin: 0 5vw 0 5vw;
+} 
+
+.search-results{
+    margin: 0 5vw 0 5vw; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
+
+.indiv-dish{
+    width: 300px;
+    margin-bottom: 20px;
+}
+
 
 .search-range-price-form{
     margin: 0 5vw 0 5vw;
+}
+
+.radio-button{
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 }
