@@ -15,9 +15,6 @@
 }
 
 .search-chkbox{
-    /* border: 1px solid #FFFFFF; */
-    /* background-color: #f5f9e4; */
-    /* background:rgba(1,1,1,0.7); */
     background-color: #ae2027;
     border-radius: 10px;
 }
@@ -45,8 +42,6 @@ legend {
 .search-results{
     color:#FFFFFF;
     margin: 10px;
-    /* background-color: #f5f9e4; */
-    /* background:rgba(1,1,1,0.7); */
     background-color: #ae2027;
     padding: 20px;
     border-radius: 10px;

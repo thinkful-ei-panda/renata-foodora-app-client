@@ -49,25 +49,26 @@ export default class RestaurantLanding extends React.Component {
             <h3 className='color'>List of Dishes: </h3>
               <div className='dishes-results'>
           {this.state.dishes.map((result) => (
-            <label key={result.id}>
-              <h4>
-                Name: <em>{result.name}</em>
-              </h4>
+            <div className='results-rest' key={result.id}>
+              <label>
+                <h4>
+                  Name: <em>{result.name}</em>
+                </h4>
 
-              <h5>$ {result.price}</h5>
-              <h5>
-                {result.tag_names.map((e) => {
-                    return <div key={e} className="tag-names">#{e}</div>
-                })}
-              </h5>
+                <h5>$ {result.price}</h5>
+                <h5>
+                  {result.tag_names.map((e) => {
+                      return <div key={e} className="tag-names">#{e}</div>
+                  })}
+                </h5>
+              
 
-      {/* THIRD PART -  (restaurant-home) - CALLS THE COMPONENT TO ADD THE DELETE BUTTON- */}
-              <RestaurantDishDelete 
-              delete={this.delete}
-              dish={result}/>
-
-              <hr />
-            </label>
+        {/* THIRD PART -  (restaurant-home) - CALLS THE COMPONENT TO ADD THE DELETE BUTTON- */}
+                <RestaurantDishDelete 
+                delete={this.delete}
+                dish={result}/>
+              </label>
+            </div>
           ))}
         </div>
           </div>

@@ -4,7 +4,7 @@
 .div-container{
   display: flex;
   justify-content: center;
-  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../src/Images/b42iYx.png);
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../Images/b42iYx.png);
 }
 
 .div-main-container {
@@ -95,6 +95,17 @@ nav {
   color: #000;
 }
 
+label{
+  margin-right: 10px;
+}
+
+input{
+  margin-left: 10px;
+}
+
+a{
+  text-decoration: none;
+}
 
 /* +++++++++++++++ MEDIUM & BIG MEDIAS +++++++++++++++++++ */
 @media all and (min-width: 600px) {

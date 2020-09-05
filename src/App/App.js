@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import FooterRouter from "./Router/FooterRouter";
-import Copyright from "./pages/Copyright";
+import FooterRouter from "../Router/FooterRouter";
+import Copyright from "../pages/Copyright";
 import "./App.css";
-import MainRouter from "./Router/MainRouter";
-import Error from './Error';
-import FullLogin from "./Login/FullLogin";
-import logo600 from './Images/foodora-logo600.png';
+import MainRouter from "../Router/MainRouter";
+import Error from '../Error';
+import FullLogin from "../Login/FullLogin";
+import logo600 from '../Images/foodora-logo600.png';
 
 class App extends React.Component {
 

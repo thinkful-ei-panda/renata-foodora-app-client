@@ -17,10 +17,19 @@
 .dishes-results{
     border: 1px solid #000;
     margin: 10px;
-    /* background:rgba(1,1,1,0.7); */
     background-color: #ae2027;
     padding: 20px;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.results-rest{
+    border: 2px solid white;
+    border-radius: 10px;
+    margin: 10px;
+    background-color: #fff1f1;
+    color: #000;
 }
 
 .dish_main{
@@ -40,6 +49,14 @@
 
 .dishes-results{
     margin: 0 5vw 0 5vw;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.results-rest{
+    width: 300px;
+    margin-bottom: 20px;
 }
   
 }
