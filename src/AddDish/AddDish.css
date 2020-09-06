@@ -41,6 +41,11 @@
     color: #fff;
 }
 
+.rest-name{
+    margin: 10px;
+    padding: 10px;
+}
+
 /* +++++++++++++++ MEDIUM & BIG MEDIAS +++++++++++++++++++ */
 @media all and (min-width: 600px) {
 .addDish-tag-list{

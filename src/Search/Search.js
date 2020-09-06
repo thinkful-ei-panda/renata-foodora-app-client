@@ -101,7 +101,7 @@ class Search extends React.Component {
                   checked={this.state.price === "0"}
                   onChange={this.handleSearchChange}
                 />
-                <label htmlFor="0"> Any price</label>
+                <label htmlFor="0" className='radio-button-ch'> Any price</label>
                 </div>
 
                 <div className='radio-button-ch'>
@@ -113,7 +113,7 @@ class Search extends React.Component {
                   checked={this.state.price === "1"}
                   onChange={this.handleSearchChange}
                 />
-                <label htmlFor="1"> $1 - $10</label>
+                <label htmlFor="1" className='radio-button-ch'> $1 - $10</label>
                 </div>
 
                 <div className='radio-button-ch'>
@@ -125,7 +125,7 @@ class Search extends React.Component {
                   checked={this.state.price === "2"}
                   onChange={this.handleSearchChange}
                 />
-                <label htmlFor="2"> $11 - $40</label>
+                <label htmlFor="2" className='radio-button-ch'> $11 - $40</label>
                 </div>
 
                 <div className='radio-button-ch'>
@@ -137,7 +137,7 @@ class Search extends React.Component {
                   checked={this.state.price === "3"}
                   onChange={this.handleSearchChange}
                 />
-                <label htmlFor="3"> $41 - $60</label>
+                <label htmlFor="3" className='radio-button-ch'> $41 - $60</label>
                 </div>
 
                 <div className='radio-button-ch'>
@@ -149,7 +149,7 @@ class Search extends React.Component {
                   checked={this.state.price === "4"}
                   onChange={this.handleSearchChange}
                 />
-                <label htmlFor="4"> $61 - $80</label>
+                <label htmlFor="4" className='radio-button-ch'> $61 - $80</label>
                 </div>
 
                 <div className='radio-button-ch'>
@@ -161,7 +161,7 @@ class Search extends React.Component {
                   checked={this.state.price === "5"}
                   onChange={this.handleSearchChange}
                 />
-                <label htmlFor="5"> $81 or above</label>
+                <label htmlFor="5" className='radio-button-ch'> $81 or above</label>
                 </div>
                 </div>
             </fieldset>
@@ -183,8 +183,8 @@ class Search extends React.Component {
         </form>
         <div className="search-results">
           {this.state.searchResults.map((result) => (
-            <div className='indiv-dish'>
-            <label key={result.id}>
+            <div className='indiv-dish' key={result.id}>
+            <label>
               <h4 className='dish-title'>
                 <em>Name:</em> {result.name}
               </h4>

@@ -51,7 +51,7 @@ export default class RestaurantLanding extends React.Component {
           {this.state.dishes.map((result) => (
             <div className='results-rest' key={result.id}>
               <label>
-                <h4>
+                <h4 className='rest-name'>
                   Name: <em>{result.name}</em>
                 </h4>
 

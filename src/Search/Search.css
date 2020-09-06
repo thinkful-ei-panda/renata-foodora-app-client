@@ -108,4 +108,8 @@ legend {
     justify-content: space-evenly;
 }
 
+.radio-button-ch {
+    white-space: nowrap;
+}
+
 }

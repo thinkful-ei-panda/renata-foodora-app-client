@@ -12,7 +12,7 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  margin: 20px 15vw 20px 15vw;
+  margin: 20px 5vw 20px 5vw;
   background-color: #F8FDE1;
   color: #FFFFFF;
   font-family: 'Montserrat', sans-serif;
@@ -109,6 +109,10 @@ a{
 
 /* +++++++++++++++ MEDIUM & BIG MEDIAS +++++++++++++++++++ */
 @media all and (min-width: 600px) {
+.div-main-container{
+  margin: 20px 15vw 20px 15vw;
+}
+
   .welcome{
     font-size: 25px;
   }
