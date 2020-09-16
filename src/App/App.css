@@ -107,6 +107,17 @@ a{
   text-decoration: none;
 }
 
+.mockCred{
+  border-radius: 10px;
+  font-size: 15px;
+  color: #FFFFFF;
+  margin: 0 30px 0 30px;
+  border: 2px solid black;
+  font-weight: bold;
+  padding: 10px;
+  background-color: #ae2027;
+}
+
 /* +++++++++++++++ MEDIUM & BIG MEDIAS +++++++++++++++++++ */
 @media all and (min-width: 600px) {
 .div-main-container{
@@ -128,5 +139,7 @@ a{
     flex-direction: column;
     justify-content: space-between;
   }
-    
+  .mockCred{
+    margin: 0 100px 0 100px;
+  }
 }

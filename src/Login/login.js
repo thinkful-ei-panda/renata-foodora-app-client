@@ -90,6 +90,11 @@ export default class Login extends React.Component {
               </div>
             )}
           </form>
+          <div className='mockCred'>
+              <h2><em>Mock Credentials</em></h2>
+              <h4>Username: admin</h4>
+              <h4> Password: Password1</h4>
+          </div>
         </div>
     );
   }
