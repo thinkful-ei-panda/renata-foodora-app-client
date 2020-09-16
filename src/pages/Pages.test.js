@@ -39,7 +39,7 @@ describe('<Contact />', () => {
     });
   });
 
-  describe('<FAQ />', () => {
+  describe('<Help />', () => {
     it('renders without crashing', () => {
       mount(
         <BrowserRouter>

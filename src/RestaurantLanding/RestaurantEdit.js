@@ -71,6 +71,7 @@ class RestaurantEdit extends React.Component{
                         type="text"
                         name="name"
                         id="update-form-name"
+                        placeholder="Test Restaurant"
                         value={this.state.name}
                         onChange={this.handleRegUpdate}
                     ></input>
@@ -84,6 +85,7 @@ class RestaurantEdit extends React.Component{
                         type="text"
                         name="phone"
                         id="update-form-phone"
+                        placeholder="222-445-6378"
                         value={this.state.phone}
                         onChange={this.handleRegUpdate}
                     ></input>

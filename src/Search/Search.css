@@ -17,6 +17,7 @@
 .search-chkbox{
     background-color: #ae2027;
     border-radius: 10px;
+    margin: 10px;
 }
 
 .search-range-price-form{
@@ -43,7 +44,6 @@ legend {
     color:#FFFFFF;
     margin: 10px;
     background-color: #ae2027;
-    padding: 20px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -95,6 +95,7 @@ legend {
 
 .indiv-dish{
     width: 300px;
+    margin: 2vw 0 0 0;
     margin-bottom: 20px;
 }
 

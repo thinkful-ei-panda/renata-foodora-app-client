@@ -5,6 +5,7 @@ import AuthAPIService from "../Service/AuthAPIService";
 import TokenService from "../Service/TokenService";
 import { Redirect } from "react-router-dom";
 
+
 export default class Login extends React.Component {
   state = {
     username: "",
@@ -53,6 +54,7 @@ export default class Login extends React.Component {
     if (this.props.currentUserId != null) {
       return <Redirect to="/" />;
     }
+    
     return (
       <div id="login" className="tabContent">
           <h3>Restaurant Login</h3>
@@ -64,6 +66,7 @@ export default class Login extends React.Component {
                 type="text"
                 name="username"
                 id="login-form-username"
+                placeholder="test"
                 value={this.state.username}
                 onChange={this.handleRestChange}
               ></input>
@@ -73,6 +76,7 @@ export default class Login extends React.Component {
               <input
                 type="password"
                 name="password"
+                placeholder="Password1"
                 id="login-form-password"
                 value={this.state.password}
                 onChange={this.handleRestChange}

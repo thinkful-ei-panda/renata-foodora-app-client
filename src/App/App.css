@@ -57,15 +57,15 @@ nav {
 }
 
 .faq{
-  margin: 5px;
-  text-justify: auto;
+  margin: 10px;
+  padding: 10px;
   color: #000;
   font-weight: bold;
 }
 
 .about{
   margin: 10px;
-  text-justify: auto;
+  padding: 10px;
   color: #000;
   font-weight: bold;
 }
@@ -141,5 +141,11 @@ a{
   }
   .mockCred{
     margin: 0 100px 0 100px;
+  }
+}
+
+@media all and (min-width: 800px){
+  .div-container{
+    min-height: 100vh;
   }
 }

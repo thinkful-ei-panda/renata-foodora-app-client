@@ -19,7 +19,7 @@ export default function About() {
           Our app includes several dietary restriction that goes from peanut
           allergy, keto, low carb, sugar free, vegan and so much more! No matter
           your goal, if it is from allergy or diet, we have the dishes ready
-          for you to savor!{" "}
+          for you to savor!
         </p>
       </div>
     </section>

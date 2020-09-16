@@ -88,6 +88,7 @@ class AddDish extends React.Component {
             <label htmlFor="dish-name">Dish Name:</label>
             <input
               type="text"
+              placeholder="Beef Stroganoff"
               name="name"
               id="dish-name"
               value={this.state.name}
@@ -100,6 +101,7 @@ class AddDish extends React.Component {
               type="text"
               name="price"
               id="dish-price"
+              placeholder="45"
               value={this.state.price}
               onChange={this.handleDishChange}
             />

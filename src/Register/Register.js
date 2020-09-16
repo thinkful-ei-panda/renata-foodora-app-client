@@ -79,6 +79,7 @@ export default class Register extends React.Component {
                 name="username"
                 id="register-form-username"
                 value={this.state.username}
+                placeholder="test"
                 onChange={this.handleRegChange}
               ></input>
             </div>
@@ -88,6 +89,7 @@ export default class Register extends React.Component {
                 type="password"
                 name="password"
                 id="register-form-password"
+                placeholder="Password1"
                 value={this.state.password}
                 onChange={this.handleRegChange}
               ></input>
@@ -98,6 +100,7 @@ export default class Register extends React.Component {
                 type="text"
                 name="name"
                 id="register-form-restname"
+                placeholder="Test Restaurant"
                 value={this.state.name}
                 onChange={this.handleRegChange}
               ></input>
@@ -108,6 +111,7 @@ export default class Register extends React.Component {
                 type="text"
                 name="phone"
                 id="register-form-phone"
+                placeholder="222-345-6278"
                 value={this.state.phone}
                 onChange={this.handleRegChange}
               ></input>
