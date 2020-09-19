@@ -100,7 +100,7 @@ class RestaurantEdit extends React.Component{
                 {/* UTILIZING A REACT SPINNER ON LOADING */}
                 {loading && (
                 <div className="loading-screen">
-                    <ScaleLoader size={35} color={"#f52c15"} loading={loading} />
+                    <ScaleLoader size={35} color={"#FFFFFF"} loading={loading} />
                 </div>
                 )}
                 </form>

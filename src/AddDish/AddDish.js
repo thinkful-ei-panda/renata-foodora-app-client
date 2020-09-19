@@ -118,7 +118,7 @@ class AddDish extends React.Component {
             </button>
             {loading && (
               <div className="loading-screen">
-                <ScaleLoader size={35} color={"#f52c15"} loading={loading} />
+                <ScaleLoader size={35} color={"#FFFFFF"} loading={loading} />
               </div>
             )}
           </div>

@@ -66,7 +66,7 @@ export default class Login extends React.Component {
                 type="text"
                 name="username"
                 id="login-form-username"
-                placeholder="test"
+                placeholder="admin"
                 value={this.state.username}
                 onChange={this.handleRestChange}
               ></input>
@@ -90,7 +90,7 @@ export default class Login extends React.Component {
             </button>
             {loading && (
               <div className="loading-screen">
-                <ScaleLoader size={35} color={"#f52c15"} loading={loading} />
+                <ScaleLoader size={35} color={"#FFFFFF"} loading={loading} />
               </div>
             )}
           </form>

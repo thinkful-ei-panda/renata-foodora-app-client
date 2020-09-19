@@ -15,10 +15,11 @@
 }
 
 .dishes-results{
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
     margin: 10px;
-    background-color: #ae2027;
-    padding: 20px;
+    /* background-color: #ae2027; */
+    background:linear-gradient( rgba(168, 59, 59, 0.582), rgba(150, 14, 14, 0.856) );
+    /* padding: 20px; */
     border-radius: 10px;
     display: flex;
     flex-direction: column;

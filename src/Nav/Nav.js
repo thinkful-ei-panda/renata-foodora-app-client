@@ -25,6 +25,7 @@ export default class Nav extends React.Component {
     return (
       <nav>
         <div className="welcome">
+          <h3 className='rest-title'>Restaurant
     {/* INVOLVING CONTEXT AROUND THE LOGGING LINKS */}
           <LoginContext.Consumer>
             {({ loggedInRestaurantId, loggedInRestaurantName, logout }) => {
@@ -52,7 +53,7 @@ export default class Nav extends React.Component {
                 // ACTUAL LINKS/PATH RATHER IT WILL SHOW REGISTER OR NOT
                 return (
                 <Link className="welcome" to={"/register"}>
-                  <div>Restaurant Register</div>
+                  <div>Register</div>
                 </Link>
                 );
               } else {
@@ -81,6 +82,7 @@ export default class Nav extends React.Component {
               }
             }}
           </LoginContext.Consumer>
+          </h3>
         </div>
       </nav>
     );

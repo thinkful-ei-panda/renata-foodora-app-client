@@ -4,6 +4,7 @@ import About from "../pages/About";
 import Contact from "../pages/Contact";
 import FAQ from "../pages/FAQ";
 import Footer from "../Components/Footer";
+import LearnMore from '../pages/LearnMore';
 
 export default function FooterRouter() {
   return (
@@ -14,6 +15,7 @@ export default function FooterRouter() {
         <Route exact path="/about" component={About} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/help" component={FAQ} />
+        <Route exact path="/learn-more" component={LearnMore} />
       </Switch>
     </footer>
   );

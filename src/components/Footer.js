@@ -6,7 +6,8 @@ export default function Footer() {
     <footer>
       <NavLink className='footer-router' to="/about">About |</NavLink>
       <NavLink className='footer-router' to="/contact">Contact |</NavLink>
-      <NavLink className='footer-router' to="/help">Help</NavLink>
+      <NavLink className='footer-router' to="/help">Help |</NavLink>
+      <NavLink className='footer-router' to="/learn-more">Landing Page</NavLink>
     </footer>
   );
 }
